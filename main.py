@@ -8,7 +8,29 @@
 import os
 
 # módulos propios
-import registro
+from registro import * 
+
+def main(): 
+
+    menu_principal = """
+    Bienvenido. 
+
+    1 - Ingresar
+    2 - Registrarse 
+
+    Seleccione una opción (-1 para salir): """
+    
+    opcion = int(input(menu_principal))
+    
+    while True: 
+
+        if opcion == -1: 
+            break 
+        elif opcion == 1: 
+            pass 
+        elif opcion == 2:
+            pass 
 
 if __name__ == '__main__': 
-    registro
+
+    main()
