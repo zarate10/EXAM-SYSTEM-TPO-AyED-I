@@ -1,7 +1,7 @@
 import os
 from registro import * 
-
-usuarios = os.scandir('./db/usuarios')
+path_users = './db/usuarios'
+usuarios = os.scandir(path_users)
 
 def login():
     intentos = 0
@@ -9,14 +9,20 @@ def login():
     if usuario_existe(user):
         user += '.txt'
         for usuario in usuarios:
-            print(usuario)
-            if usuario == user:
-                print('ENCONTRADO')
-                while intentos < 4:
+            if usuario.name == user:
+                with open(f'{path_users}/{user}','r',encoding='UTF-8') as datos:
+                    nombre,contraseña = datos.readline().split(';')
+                    while True:
+                        if intentos == 4:
+                            print('CANTIDAD DE ERRORES EXCEDIDA')
+                            return False
                         password = input('Ingrese la contraseña: ')
+                        if password == contraseña:
+                            return True
+                        else:
+                            intentos += 1 
     else:
         print('USUARIO INEXISTENTE')
         return False
 
-
-login()
+print(login())
