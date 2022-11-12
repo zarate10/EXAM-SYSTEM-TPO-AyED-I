@@ -6,14 +6,9 @@ TREINTA = [4,6,9,11]
 TREINTIUNO = [1,3,5,7,8,10,12]
 
 def validarBisiesto(anio):
-  if anio%4 == 0 and anio%100 == 0 and anio%400 == 0:
-    return True
-  elif anio%4 == 0 and anio%100 == 0:
-    return False
-  elif anio%4 == 0:
-    return True
-  else: 
-    return False
+  if not anio % 4 and (anio % 100 or not anio % 400):
+        return True
+  return False
 
 def reset(dia,mes,anio):
   dia = 1
@@ -57,5 +52,4 @@ def dias_restantes(fecha):
     dias = diasEntre(today.day,today.month,today.year,int(fecha[6:]),int(fecha[4:6]),int(fecha[:4]))
 
     return dias
-
 
