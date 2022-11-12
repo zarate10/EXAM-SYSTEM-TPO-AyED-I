@@ -16,6 +16,8 @@ def usuario_existe():
     for user in usuarios: 
         
         if user.name == new_user: 
-            pass 
+            return False 
+
+    return True
 
 usuario_existe()
