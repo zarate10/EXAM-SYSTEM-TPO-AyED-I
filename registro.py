@@ -9,8 +9,7 @@ import os
 
 usuarios = os.scandir('./db/usuarios')
 
-def usuario_existe(): 
-    new_user = input('Ingrese un nombre de usuario: ')
+def usuario_existe(new_user): 
     new_user += '.txt'
 
     for user in usuarios: 
@@ -20,4 +19,3 @@ def usuario_existe():
 
     return False
 
-usuario_existe()
