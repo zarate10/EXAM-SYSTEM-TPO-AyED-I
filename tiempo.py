@@ -6,14 +6,10 @@ TREINTA = [4,6,9,11]
 TREINTIUNO = [1,3,5,7,8,10,12]
 
 def validarBisiesto(anio):
-  if anio%4 == 0 and anio%100 == 0 and anio%400 == 0:
-    return True
-  elif anio%4 == 0 and anio%100 == 0:
-    return False
-  elif anio%4 == 0:
-    return True
-  else: 
-    return False
+  if anio % 4 == 0 and (anio % 100 != 0 or anio % 400 == 0):
+        return True
+  else:
+        return False
 
 def reset(dia,mes,anio):
   dia = 1
