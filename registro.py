@@ -54,5 +54,3 @@ def registrar(user):
         print('Ocurrió un error:', e)
 
     return 
-
-registrar(crear_usuario())
