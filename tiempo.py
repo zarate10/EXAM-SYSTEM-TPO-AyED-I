@@ -2,8 +2,7 @@ import time
 import datetime as dt
 #TIENE QUE LLEGAR UNA FECHA MAS GRANDE QUE LA DEL DIA DE HOY
 
-TREINTA = [4,6,9,11]
-TREINTIUNO = [1,3,5,7,8,10,12]
+LIMITES = (31,28,31,30,31,30,31,31,30,31,30,31)
 
 def validarBisiesto(year):
   return year % 4 == 0 and year % 100 != 0 or year % 400 == 0
@@ -19,18 +18,15 @@ def reset(dia,mes,anio):
   return dia,mes,anio
 
 def comprobacion(dia,mes,anio):
-  if mes in TREINTA and dia>30:
-      dia,mes,anio = reset(dia,mes,anio)
-      
-  elif mes in TREINTIUNO and dia>31:
-    dia,mes,anio = reset(dia,mes,anio)
-      
-  elif mes == 2:
-    if validarBisiesto(anio) and dia == 30:
+  if mes != 2:
+      if dia > LIMITES[mes - 1]:
+        dia,mes,anio = reset(dia,mes,anio)
+  else:
+      if validarBisiesto(anio) and dia == 30:
         dia,mes,anio = reset(dia,mes,anio)
 
-    elif not validarBisiesto(anio) and dia == 29:
-      dia,mes,anio = reset(dia,mes,anio)
+      elif not validarBisiesto(anio) and dia == 29:
+        dia,mes,anio = reset(dia,mes,anio)
 
   return dia,mes,anio
 
@@ -50,4 +46,3 @@ def dias_restantes(fecha):
     dias = diasEntre(today.day,today.month,today.year,int(fecha[6:]),int(fecha[4:6]),int(fecha[:4]))
 
     return dias
-
