@@ -40,6 +40,12 @@ def diasEntre(dia1,mes1,anio1,dia2,mes2,anio2):
 
   return contador
 
+def es_menor(fecha='20221211'):
+    #Esta funcion verifica que la fecha pasada como parametro, (la del examen) sea una fecha del FUTURO y no haya pasado
+    hoy = dt.date.today()
+    fecha = dt.date(int(fecha[:4]),int(fecha[4:6]),int(fecha[6:]))
+    return hoy < fecha
+
 #A DIAS RESTANTES HAY QUE PASARLE UNA FECHA EN FORMATO AAAAMMDD
 def dias_restantes(fecha):
     today = dt.date.today()
