@@ -51,6 +51,7 @@ def diasEntre(dia1,mes1,anio1,dia2,mes2,anio2):
 
   return contador
 
+#A DIAS RESTANTES HAY QUE PASARLE UNA FECHA EN FORMATO AAAAMMDD
 def dias_restantes(fecha):
     today = dt.date.today()
     dias = diasEntre(today.day,today.month,today.year,int(fecha[6:]),int(fecha[4:6]),int(fecha[:4]))
