@@ -5,10 +5,8 @@ import datetime as dt
 TREINTA = [4,6,9,11]
 TREINTIUNO = [1,3,5,7,8,10,12]
 
-def validarBisiesto(anio):
-  if not anio % 4 and (anio % 100 or not anio % 400):
-        return True
-  return False
+def validarBisiesto(year):
+  return year % 4 == 0 and year % 100 != 0 or year % 400 == 0
 
 def reset(dia,mes,anio):
   dia = 1
