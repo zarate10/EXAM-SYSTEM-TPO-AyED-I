@@ -1,5 +1,13 @@
+# -*- coding: utf-8 -*-
+#
+#  login.py
+#  
+#  Trabajo Práctico Final
+#  Algoritmos y Estructuras de Datos I
+#  Equipo: Cañete Andrés, Ciardelli Martín, Touris Santiago, Traba Federico, Zarate Lautaro
+
 import os
-from registro import * 
+from registro import usuario_existe
 
 path_users = './db/usuarios'
 usuarios = os.scandir(path_users)

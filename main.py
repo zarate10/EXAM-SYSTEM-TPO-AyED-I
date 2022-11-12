@@ -2,14 +2,17 @@
 #
 #  main.py
 #  
-#  Copyright 2022 by Diógenes y los perros
+#  Trabajo Práctico Final
+#  Algoritmos y Estructuras de Datos I
 #  Equipo: Cañete Andrés, Ciardelli Martín, Touris Santiago, Traba Federico, Zarate Lautaro
 
+# librerias
 import os
 
 # módulos propios
-from registro import * 
+from snippets.registro import *
 
+# funciones
 def main(): 
 
     menu_principal = """
@@ -20,17 +23,19 @@ def main():
 
     Seleccione una opción (-1 para salir): """
     
-    opcion = int(input(menu_principal))
-    
     while True: 
+        os.system('cls')
+        opcion = int(input(menu_principal))
 
         if opcion == -1: 
             break 
         elif opcion == 1: 
             pass 
         elif opcion == 2:
-            pass 
-
+            os.system('cls')
+            registrar() 
+ 
+# main 
 if __name__ == '__main__': 
 
     main()

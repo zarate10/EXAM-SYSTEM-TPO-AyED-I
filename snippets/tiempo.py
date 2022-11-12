@@ -1,5 +1,14 @@
+# -*- coding: utf-8 -*-
+#
+#  tiempo.py
+#  
+#  Trabajo Práctico Final
+#  Algoritmos y Estructuras de Datos I
+#  Equipo: Cañete Andrés, Ciardelli Martín, Touris Santiago, Traba Federico, Zarate Lautaro
+
 import time
 import datetime as dt
+
 #TIENE QUE LLEGAR UNA FECHA MAS GRANDE QUE LA DEL DIA DE HOY
 
 TREINTA = [4,6,9,11]
