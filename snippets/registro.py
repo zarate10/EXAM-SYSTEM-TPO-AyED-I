@@ -12,26 +12,21 @@ path_users = './db/usuarios'
 usuarios = os.scandir(path_users)
 
 def usuario_existe(new_user): 
-    new_user += '.txt'
-
+ 
     for user in usuarios: 
-        if user.name == new_user: 
-            return True 
+        if user.name == new_user + '.txt': 
+            return True
 
     return False
 
-
 # ERROR, si colocamos dos veces un nombre utilizado lo admite
-def crear_usuario():
+def validar_username():
 
-    while True:
+    while True: 
         new_user = input('Ingrese un nuevo usuario: ')
-        
-        if usuario_existe(new_user): 
-            print('Usuario existente.')
-            return False
-        else: 
-            return new_user
+
+        if not usuario_existe(new_user): 
+            return new_user 
 
 def crear_password():
 
@@ -45,10 +40,8 @@ def crear_password():
         else: 
             return password
 
-
 def registrar(): 
-
-    user = crear_usuario()
+    user = validar_username()
 
     if user: 
         pw = crear_password()
