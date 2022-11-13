@@ -55,7 +55,7 @@ def es_menor(fecha='20221211'):
     fecha = dt.date(int(fecha[:4]),int(fecha[4:6]),int(fecha[6:]))
     return hoy < fecha
 
-#A DIAS RESTANTES HAY QUE PASARLE UNA FECHA EN FORMATO AAAAMMDD
+#A DIAS RESTANTES HAY QUE PASARLE UNA FECHA EN FORMATO AAAAMMDD // EN FORMATO STRING
 def dias_restantes(fecha):
     today = dt.date.today()
     dias = diasEntre(today.day,today.month,today.year,int(fecha[6:]),int(fecha[4:6]),int(fecha[:4]))
