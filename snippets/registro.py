@@ -22,7 +22,7 @@ def usuario_existe(new_user):
 def validar_username():
 
     while True: 
-        new_user = input('Ingrese un nuevo usuario: ')
+        new_user = input('\nIngrese un nuevo usuario: ')
 
         if not new_user.isalnum(): 
             print('Nombre de usuario debe contener sólo letras y números.')

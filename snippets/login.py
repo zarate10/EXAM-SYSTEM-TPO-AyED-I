@@ -14,29 +14,28 @@ usuarios = os.scandir(path_users)
 
 def login():
     intentos = 0
-    user = input('Ingrese el usuario: ')
-    if usuario_existe(user):
-        user += '.txt'
-        for usuario in usuarios:
-            if usuario.name == user:
-                try:
-                    with open(f'{path_users}/{user}','r',encoding='UTF-8') as datos:
-                        nombre,contraseña = datos.readline().split(';')
-                        while True:
-                            if intentos == 3:
-                                #No se va a mostrar en el main (?)
-                                print('CANTIDAD DE ERRORES EXCEDIDA')
-                                return False
-                            elif intentos == 2:
-                                print('ÚLTIMO INTENTO')
-                            password = input('Ingrese la contraseña: ')
-                            if password == contraseña:
-                                return True
-                            else:
-                                intentos += 1 
-                    
-                except Exception as e:
-                    print(f'Ha ocurrido un error: {e}')
-    else:
-        print('USUARIO INEXISTENTE')
+    user = input('\nIngrese su usuario: ')
+
+    if not usuario_existe(user): 
+        print('Usuario inexistente.')
         return False
+
+    try:
+        with open(f'{path_users}/{user}.txt','rt',encoding='UTF-8') as datos:
+            nombre, pw_account = datos.readline().split(';')
+                        
+            while True:
+                pw_input = input('Ingrese la contraseña: ')
+
+                if pw_input != pw_account: 
+                    intentos += 1
+                    print(f'Contraseña errónea {intentos}/3')
+                else: 
+                    return nombre 
+    
+                if intentos == 3: 
+                    return False 
+                    
+    except Exception as e:
+        print(f'Ha ocurrido un error: {e}')
+
