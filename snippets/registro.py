@@ -7,26 +7,32 @@
 #  Equipo: Cañete Andrés, Ciardelli Martín, Touris Santiago, Traba Federico, Zarate Lautaro
 
 import os 
+from os import path 
 
 path_users = './db/usuarios'
 usuarios = os.scandir(path_users)
 
 def usuario_existe(new_user): 
  
-    for user in usuarios: 
-        if user.name == new_user + '.txt': 
-            return True
-
+    if os.path.isfile(f'{path_users}/{new_user}.txt'):
+        return True 
+    
     return False
 
-# ERROR, si colocamos dos veces un nombre utilizado lo admite
 def validar_username():
 
     while True: 
         new_user = input('Ingrese un nuevo usuario: ')
 
-        if not usuario_existe(new_user): 
-            return new_user 
+        if not new_user.isalnum(): 
+            print('Nombre de usuario debe contener sólo letras y números.')
+        elif len(new_user) < 3: 
+            print('El nombre de usuario debe ser mayor a tres caracteres.')
+        elif usuario_existe(new_user): 
+            print('El nombre de usuario ya existe')
+        else: 
+            if not usuario_existe(new_user): 
+                return new_user.strip()
 
 def crear_password():
 

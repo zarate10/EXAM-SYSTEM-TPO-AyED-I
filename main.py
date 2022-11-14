@@ -10,7 +10,9 @@
 import os
 
 # módulos propios
-from snippets.registro import *
+from snippets.registro import registrar
+from snippets.login import login
+
 
 # funciones
 def main(): 
@@ -30,7 +32,7 @@ def main():
         if opcion == -1: 
             break 
         elif opcion == 1: 
-            pass 
+            login() 
         elif opcion == 2:
             os.system('cls')
             registrar() 

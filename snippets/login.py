@@ -7,7 +7,7 @@
 #  Equipo: Cañete Andrés, Ciardelli Martín, Touris Santiago, Traba Federico, Zarate Lautaro
 
 import os
-from registro import usuario_existe
+from snippets.registro import usuario_existe
 
 path_users = './db/usuarios'
 usuarios = os.scandir(path_users)
