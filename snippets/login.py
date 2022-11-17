@@ -16,7 +16,7 @@ def login():
     intentos = 0
     user = input('\nIngrese su usuario: ')
 
-    if not usuario_existe(user): 
+    if not usuario_existe(user, path_users): 
         print('Usuario inexistente.')
         return False
 

@@ -53,7 +53,7 @@ def es_menor(fecha='20221211'):
     #Esta funcion verifica que la fecha pasada como parametro, (la del examen) sea una fecha del FUTURO y no haya pasado
     hoy = dt.date.today()
     fecha = dt.date(int(fecha[:4]),int(fecha[4:6]),int(fecha[6:]))
-    return hoy < fecha
+    return not hoy < fecha
 
 #A DIAS RESTANTES HAY QUE PASARLE UNA FECHA EN FORMATO AAAAMMDD // EN FORMATO STRING
 def dias_restantes(fecha):

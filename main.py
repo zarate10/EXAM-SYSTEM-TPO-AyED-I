@@ -13,14 +13,19 @@ import os
 from snippets.registro import registrar
 from snippets.login import login
 
-
+cantidad_examenes = 23 
 
 # funciones
 def menu_login(username): 
 
     menu_login = f"""
-    Bienvenido, {username}. 
-    
+    Hola de nuevo, {username}. 
+    Tenés {cantidad_examenes} fechas de exámenes activas 
+
+    1. Agregar nueva fecha de exámen.
+    2. Modificar fechas
+    3. Eliminar fechas
+
     Seleccione opción (-1 para desloguear): """
 
     while True: 
@@ -29,7 +34,7 @@ def menu_login(username):
     
         if opcion == -1: 
             break 
-    
+
 def main(): 
 
     menu_principal = """
@@ -53,8 +58,6 @@ def main():
                 menu_login(logueado)
         elif opcion == 2:
             registrar() 
- 
-nombre_cuenta = False 
 
 # main 
 if __name__ == '__main__': 
