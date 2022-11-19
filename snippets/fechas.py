@@ -31,7 +31,6 @@ def obtener_id(username):
 
 def obtener_fecha_examen(): 
     while True: 
-        #id,fecha,materia,descripcion
         dia, mes, anio = input('Ingrese fecha (dd-mm-aaaa): ').split('-')
                 
         if not es_menor(anio + mes + dia): 
@@ -108,9 +107,12 @@ def id_fecha(matriz):
 
 def modificar_fechas(id, matriz, username):
     #Verificacion de los cambios del usuario
-    anio,materia,instancia = verificacion_in()
+ 
+    fecha = '-'.join(list(obtener_fecha_examen()))
+    materia = validar_texto('materia')
+    instancia = validar_texto('instancia')
 
-    matriz[id] = [str(id), anio, materia, instancia] #Cambiamos la linea que desea modificar el usuario
+    matriz[id] = [str(id), fecha, materia, instancia] #Cambiamos la linea que desea modificar el usuario
 
     #Sacamos los datos del archivo e ingresamos la matriz con las actualizaciones del usuario
     try: 

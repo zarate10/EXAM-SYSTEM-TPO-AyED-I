@@ -1,7 +1,1 @@
-0;30-09-2024;progra;2do parcial
-1;30-09-2024;sis. info;final
-2;20-11-2022;materiaaa;mostrar
-3;12-12-2022;testing apliaciones;final recu
-4;20-12-2025;DyDW;Primer parcial
-5;20-11-2022;ffffffff;ffffffffff
-6;30-09-2025;Matriz1;Matriz2
+0;30-09-2025;Química;Tercer P
