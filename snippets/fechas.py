@@ -10,7 +10,7 @@ import os
 import datetime 
 
 path_fechas  = './db/fechas'
-'''from snippets.tiempo import es_menor, dias_restantes
+from snippets.tiempo import es_menor, dias_restantes
 
 def obtener_id(username): 
     """Se obtiene la última ID del archivo de fechas del usuario"""
@@ -70,7 +70,7 @@ def agregar_fecha(username):
     except Exception as e:
         print('Ocurrió un error:', e)
 
-    return'''
+    return
 
 def matriz_fechas(username):
     #Retorna la matriz con la fechas del usuario
@@ -85,14 +85,14 @@ def matriz_fechas(username):
 
 
 
-'''def mostrar_fechas(matriz):
+def mostrar_fechas(matriz):
     #Muestra la matriz de la funcion matriz_fechas
     print('{:<2} | {:<10} | {:<15} | {:<20} | {:<15}'.format('ID','Fecha', "Días restantes", 'Materia', 'Instancia'))
     print('-'*85)
     for elem in matriz:
         print('{:<2} | {:<10} | {:<15} | {:<20} | {:<15}'.format(elem[0], elem[1], dias_restantes(''.join(elem[1].split('-')[::-1])), elem[2], elem[3]))
         
-    return '''
+    return 
 
 def id_fecha(matriz):
     while True: 
