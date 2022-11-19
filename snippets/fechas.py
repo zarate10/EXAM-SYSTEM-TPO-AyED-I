@@ -37,30 +37,14 @@ def obtener_fecha_examen():
         if not es_menor(anio + mes + dia): 
             return dia, mes, anio 
 
-def agregar_materia(materia):
-    return len(materia) > 0 and len(materia) < 31 and not ';' in materia
+def validar_texto(name_option):
 
-def agregar_instancia(instancia):
-    return len(instancia) > 0 and len(instancia) < 16 and not ';' in instancia
+    while True: 
+        option = input(f'Ingrese {name_option}: ')
+        if len(option) > 0 and len(option) < 21 and not ';' in option: 
+            return option 
 
-def verificacion_in():
-    while True:
-        anio = input(f'Ingrese fecha (dd-mm-aaaa): ')
-        if len(anio) >= 8:
-            break
-        print(f'Ingrese con este formato: (dd-mm-aaaa)')
-    
-    while True:
-        materia = input(f'Ingrese materia: ')
-        if agregar_materia(materia):
-            break
-        print(f'"Materia" debe contener como maximo 30 caracteres - Vuelva a intentarlo')
-    while True:
-        instancia = input(f'Ingrese instancia: ')
-        if agregar_instancia(instancia):
-            break
-        print(f'"Instancia" debe contener como maximo 15 caracteres - Vuelva a intentarlo')
-    return anio,materia,instancia
+        print(f'"{name_option}" debe contener como maximo 20 caracteres y no debe contener ";"')
 
 def agregar_fecha(username):
     
@@ -72,9 +56,8 @@ def agregar_fecha(username):
     try: 
         with open(f'{path_fechas}/{username}_fechas.txt', 'at', encoding='UTF-8') as fechas: 
 
-            # hacer verifcacion
-            anio,materia,instancia = verificacion_in()
-
+            materia = validar_texto('materia')
+            instancia = validar_texto('instancia')
             dia, mes, anio = obtener_fecha_examen()
 
             if not id: 
