@@ -39,6 +39,8 @@ def menu_login(username):
         elif opcion == 1:
             agregar_fecha(username)
 
+    return 
+
 def main(): 
 
     menu = ('Bienvenido.', '\n1. Ingresar', "2. Registrarse")
@@ -59,6 +61,8 @@ def main():
         elif opcion == 2:
             registrar() 
 
+    return 
+    
 # main 
 if __name__ == '__main__': 
 

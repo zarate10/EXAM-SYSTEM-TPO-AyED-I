@@ -89,4 +89,5 @@ def mostrar_fechas(matriz):
     print('-'*85)
     for elem in matriz:
         print('{:<2} | {:<10} | {:<15} | {:<20} | {:<15}'.format(elem[0], elem[1], dias_restantes(''.join(elem[1].split('-')[::-1])), elem[2], elem[3]))
-
+        
+    return 
