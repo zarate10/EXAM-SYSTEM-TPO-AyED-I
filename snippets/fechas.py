@@ -36,6 +36,24 @@ def obtener_fecha_examen():
                 
         if not es_menor(anio + mes + dia): 
             return dia, mes, anio 
+        
+def verificacion_in():
+    while True:
+        anio = input(f'Ingrese fecha (dd-mm-aaaa): ')
+        if len(anio) >= 8:
+            print(f'Ingrese con este formato: (dd-mm-aaaa)')
+        break
+    while True:
+        materia = input(f'Ingrese materia: ')
+        if agregar_materia(materia):
+            break
+        print(f'"Materia" debe contener como maximo 30 caracteres - Vuelva a intentarlo')
+    while True:
+        instancia = input(f'Ingrese instancia: ')
+        if agregar_instancia(instancia):
+            break
+        print(f'"Instancia" debe contener como maximo 15 caracteres - Vuelva a intentarlo')
+    return anio,materia,instancia
 
 def agregar_fecha(username):
     
@@ -48,16 +66,7 @@ def agregar_fecha(username):
         with open(f'{path_fechas}/{username}_fechas.txt', 'at', encoding='UTF-8') as fechas: 
 
             # hacer verifcacion
-            
-            while True:
-                materia = input('Ingrese materia: ')
-                if len(materia) > 0 and len(materia) < 31 and not ';' in materia:
-                    break
-
-            while True:
-                instancia = input('Ingrese instancia: ')
-                if len(instancia) > 0 and len(instancia) < 16 and not ';' in instancia:
-                    break
+            anio,materia,instancia = verificacion_in()
 
             dia, mes, anio = obtener_fecha_examen()
 
@@ -115,19 +124,7 @@ def agregar_instancia(instancia):
 
 def modificar_fechas(id, matriz, username):
     #Verificacion de los cambios del usuario
-    while True:
-        anio = input(f'Ingrese fecha (dd-mm-aaaa): ')
-        if len(anio) >= 8:
-            break
-    while True:
-        materia = input(f'Ingrese materia: ')
-        if agregar_materia(materia):
-            break
-        print(f'"Materia" debe contener como maximo 30 caracteres - Vuelva a intentarlo')
-    while True:
-        instancia = input(f'Ingrese instancia: ')
-        if agregar_instancia(instancia):
-            break
+    anio,materia,instancia = verificacion_in()
 
     matriz[id] = [str(id), anio, materia, instancia] #Cambiamos la linea que desea modificar el usuario
 
