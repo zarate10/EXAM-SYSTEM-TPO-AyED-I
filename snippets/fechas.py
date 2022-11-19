@@ -119,4 +119,4 @@ def modificar_fechas(id, matriz, username):
         pass 
 
 # traer_fecha(matriz_fechas('diogenes'))
-modificar_fechas(traer_fecha(matriz_fechas('diogenes')), matriz_fechas('diogenes'))
+modificar_fechas(traer_fecha(matriz_fechas('diogenes')), matriz_fechas('diogenes'), 'diogenes')
