@@ -155,6 +155,3 @@ def eliminar_fechas(id,matriz,username):
     else: 
         pass 
 
-# traer_fecha(matriz_fechas('diogenes'))
-#modificar_fechas(id_fecha(matriz_fechas('diogenes')), matriz_fechas('diogenes'), 'diogenes')
-eliminar_fechas(id_fecha(matriz_fechas('diogenes')), matriz_fechas('diogenes'), 'diogenes')

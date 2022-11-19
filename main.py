@@ -12,7 +12,7 @@ import os
 # módulos propios
 from snippets.registro import registrar
 from snippets.login import login
-from snippets.fechas import agregar_fecha, matriz_fechas, mostrar_fechas
+from snippets.fechas import agregar_fecha, matriz_fechas, mostrar_fechas, modificar_fechas, id_fecha, eliminar_fechas
 
 # funciones
 def mostrar_opciones(username): 
@@ -28,6 +28,7 @@ def mostrar_opciones(username):
 
 
 
+
 def menu_login(username): 
 
     while True: 
@@ -38,6 +39,12 @@ def menu_login(username):
             break 
         elif opcion == 1:
             agregar_fecha(username)
+        elif opcion == 2:
+            modificar_fechas(id_fecha((matriz_fechas(username))),matriz_fechas(username), username)
+            mostrar_opciones(username)
+        elif opcion == 3:
+            eliminar_fechas(id_fecha(matriz_fechas(username)), matriz_fechas(username), username)
+
 
     return 
 
