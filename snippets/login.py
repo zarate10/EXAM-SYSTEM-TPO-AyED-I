@@ -14,12 +14,12 @@ usuarios = os.scandir(path_users)
 
 def login():
     intentos = 0
-    user = input('\nIngrese su usuario: ')
-
-    if not usuario_existe(user, path_users): 
+    while True:
+        user = input('\nIngrese su usuario: ')
+        if usuario_existe(user, path_users): 
+            break
         print('Usuario inexistente.')
-        return False
-
+        
     try:
         with open(f'{path_users}/{user}.txt','rt',encoding='UTF-8') as datos:
             nombre, pw_account = datos.readline().split(';')
