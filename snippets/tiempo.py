@@ -61,3 +61,5 @@ def dias_restantes(fecha):
     dias = diasEntre(today.day,today.month,today.year,int(fecha[6:]),int(fecha[4:6]),int(fecha[:4]))
 
     return dias
+
+print(dias_restantes('20221212'))

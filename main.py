@@ -12,29 +12,28 @@ import os
 # módulos propios
 from snippets.registro import registrar
 from snippets.login import login
-from snippets.fechas import agregar_fecha, matriz_fechas,mostrar_fechas
-
-
-cantidad_examenes = 23 
+from snippets.fechas import agregar_fecha, matriz_fechas, mostrar_fechas
 
 # funciones
+def mostrar_opciones(username): 
+    fechas = matriz_fechas(username)
+    
+    logueado = (f"Hola de nuevo, {username}.", f"Tenés {len(fechas)} fechas de exámenes activas\n")
+    [print(element) for element in logueado]
+
+    mostrar_fechas(fechas)
+
+    opciones = ("\n1. Agregar nueva fecha.", "2. Modificar fecha.", "3. Eliminar fecha.")
+    [print(element) for element in opciones]
+
+    return 
+
 def menu_login(username): 
-
-    menu_login = f"""
-    Hola de nuevo, {username}. 
-    Tenés {cantidad_examenes} fechas de exámenes activas 
-    {mostrar_fechas(matriz_fechas(username))}
-
-    1. Agregar nueva fecha de exámen.
-    2. Modificar fechas
-    3. Eliminar fechas
-
-    Seleccione opción (-1 para desloguear): """
 
     while True: 
         os.system("cls")
-        opcion = int(input(menu_login))
-    
+        mostrar_opciones(username)
+        opcion = int(input(f"\nSeleccione una opción (-1 para desloguear):"))
         if opcion == -1: 
             break 
         elif opcion == 1:
@@ -42,17 +41,13 @@ def menu_login(username):
 
 def main(): 
 
-    menu_principal = """
-    Bienvenido. 
+    menu = ('Bienvenido.', '\n1. Ingresar', "2. Registrarse")
 
-    1 - Ingresar
-    2 - Registrarse 
-
-    Seleccione una opción (-1 para salir): """
-    
     while True: 
         os.system('cls')
-        opcion = int(input(menu_principal))
+        
+        [print(element) for element in menu]
+        opcion = int(input("\nSeleccione una opción (-1 para salir): "))
 
         if opcion == -1: 
             break 
