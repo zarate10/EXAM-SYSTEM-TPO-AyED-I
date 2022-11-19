@@ -36,13 +36,20 @@ def obtener_fecha_examen():
                 
         if not es_menor(anio + mes + dia): 
             return dia, mes, anio 
-        
+
+def agregar_materia(materia):
+    return len(materia) > 0 and len(materia) < 31 and not ';' in materia
+
+def agregar_instancia(instancia):
+    return len(instancia) > 0 and len(instancia) < 16 and not ';' in instancia
+
 def verificacion_in():
     while True:
         anio = input(f'Ingrese fecha (dd-mm-aaaa): ')
         if len(anio) >= 8:
-            print(f'Ingrese con este formato: (dd-mm-aaaa)')
-        break
+            break
+        print(f'Ingrese con este formato: (dd-mm-aaaa)')
+    
     while True:
         materia = input(f'Ingrese materia: ')
         if agregar_materia(materia):
@@ -114,12 +121,6 @@ def id_fecha(matriz):
             print('Error: ', e)
         else: 
             return id 
-        
-def agregar_materia(materia):
-    return len(materia) > 0 and len(materia) < 31 and not ';' in materia
-
-def agregar_instancia(instancia):
-    return len(instancia) > 0 and len(instancia) < 16 and not ';' in instancia
 
 
 def modificar_fechas(id, matriz, username):
