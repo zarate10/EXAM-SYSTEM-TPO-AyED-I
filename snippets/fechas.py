@@ -105,11 +105,33 @@ def id_fecha(matriz):
             print('Error: ', e)
         else: 
             return id 
+        
+def agregar_materia(materia):
+    return len(materia) > 0 and len(materia) < 31 and not ';' in materia
+
+def agregar_instancia(instancia):
+    return len(instancia) > 0 and len(instancia) < 16 and not ';' in instancia
+
 
 def modificar_fechas(id, matriz, username):
+    #Verificacion de los cambios del usuario
+    while True:
+        anio = input(f'Ingrese fecha (dd-mm-aaaa): ')
+        if len(anio) >= 8:
+            break
+    while True:
+        materia = input(f'Ingrese materia: ')
+        if agregar_materia(materia):
+            break
+        print(f'"Materia" debe contener como maximo 30 caracteres - Vuelva a intentarlo')
+    while True:
+        instancia = input(f'Ingrese instancia: ')
+        if agregar_instancia(instancia):
+            break
 
-    matriz[id] = [str(id), '22-12-2024', 'Progra 3', 'Recuperatorio']
+    matriz[id] = [str(id), anio, materia, instancia] #Cambiamos la linea que desea modificar el usuario
 
+    #Sacamos los datos del archivo e ingresamos la matriz con las actualizaciones del usuario
     try: 
         with open(f'{path_fechas}/{username}_fechas.txt', 'wt', encoding='UTF-8') as fechas:
             [fechas.write(f'{arr[0]};{arr[1]};{arr[2]};{arr[3]}\n') for arr in matriz]
@@ -134,5 +156,5 @@ def eliminar_fechas(id,matriz,username):
         pass 
 
 # traer_fecha(matriz_fechas('diogenes'))
-# modificar_fechas(id_fecha(matriz_fechas('diogenes')), matriz_fechas('diogenes'), 'diogenes')
+#modificar_fechas(id_fecha(matriz_fechas('diogenes')), matriz_fechas('diogenes'), 'diogenes')
 eliminar_fechas(id_fecha(matriz_fechas('diogenes')), matriz_fechas('diogenes'), 'diogenes')

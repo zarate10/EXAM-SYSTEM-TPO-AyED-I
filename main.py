@@ -26,6 +26,8 @@ def mostrar_opciones(username):
 
     return 
 
+
+
 def menu_login(username): 
 
     while True: 
