@@ -108,16 +108,15 @@ def traer_fecha(fecha):
 
 def modificar_fechas(id, matriz):
 
-    matriz[id] = [id, '22-12-2024', 'Progra 3', 'Recuperatorio']
+    matriz[id] = [str(id), '22-12-2024', 'Progra 3', 'Recuperatorio']
 
     try: 
         with open(f'{path_fechas}/diogenes_fechas.txt', 'wt', encoding='UTF-8') as fechas:
-            [fechas.write(f'{arr[0]};{arr[1]};{arr[2]};{arr[3]};{arr[4]}') for arr in matriz]
-    except:
-        pass 
+            [fechas.write(f'{arr[0]};{arr[1]};{arr[2]};{arr[3]}\n') for arr in matriz]
+    except Exception as e:
+        print('Ocurrió un error:', e) 
     else: 
         pass 
-
 
 # traer_fecha(matriz_fechas('diogenes'))
 modificar_fechas(traer_fecha(matriz_fechas('diogenes')), matriz_fechas('diogenes'))
