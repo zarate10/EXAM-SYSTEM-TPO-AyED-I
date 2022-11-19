@@ -42,7 +42,7 @@ def menu_login(username):
 def main(): 
 
     menu = ('Bienvenido.', '\n1. Ingresar', "2. Registrarse")
-
+    
     while True: 
         os.system('cls')
         

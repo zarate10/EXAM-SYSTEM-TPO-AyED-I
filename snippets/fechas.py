@@ -116,7 +116,23 @@ def modificar_fechas(id, matriz, username):
     except Exception as e:
         print('Ocurrió un error:', e) 
     else: 
+        pass
+
+def eliminar_fechas(id,matriz,username):
+    matriz.pop(id)
+
+    for i in range(len(matriz)):
+        matriz[i][0] = str(i)
+
+    try: 
+        with open(f'{path_fechas}/{username}_fechas.txt', 'wt', encoding='UTF-8') as fechas:
+            [fechas.write(f'{arr[0]};{arr[1]};{arr[2]};{arr[3]}\n') for arr in matriz]
+    except Exception as e:
+        print('Ocurrió un error:', e) 
+
+    else: 
         pass 
 
 # traer_fecha(matriz_fechas('diogenes'))
-modificar_fechas(id_fecha(matriz_fechas('diogenes')), matriz_fechas('diogenes'), 'diogenes')
+# modificar_fechas(id_fecha(matriz_fechas('diogenes')), matriz_fechas('diogenes'), 'diogenes')
+eliminar_fechas(id_fecha(matriz_fechas('diogenes')), matriz_fechas('diogenes'), 'diogenes')

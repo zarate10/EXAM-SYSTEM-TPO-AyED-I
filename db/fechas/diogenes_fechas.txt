@@ -4,6 +4,6 @@
 3;12-12-2022;testing apliaciones;final recu
 4;20-12-2025;DyDW;Primer parcial
 5;19-11-2023;SI I;Segundo parcial
-6;22-12-2024;Progra 3;Recuperatorio
+6;02-10-2023;Tourisss;Touris recu
 7;30-09-2023;Zarate;final Z
 8;27-11-2022;T de Frutilla;Final Traba
