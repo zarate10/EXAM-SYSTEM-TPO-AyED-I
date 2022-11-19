@@ -94,7 +94,7 @@ def matriz_fechas(username):
         
     return '''
 
-def modificar_fechas(matriz):
+def verificar_id(matriz):
     encontrado = False
     indice = []
     while True:
@@ -107,8 +107,9 @@ def modificar_fechas(matriz):
         if op == matriz[x][0]:
             indice = matriz[x]
             encontrado = True
-            
-    matriz[int(op)] = [op,'27-11-2022','T de Frutilla','Final Traba']
+
+def modificar_fechas(id, matriz) 
+    matriz[int(id)] = [id,'27-11-2022','T de Frutilla','Final Traba']
     
     print(matriz)
     with open(f'{path_fechas}/diogenes_fechas.txt', 'wt', encoding='UTF-8') as fechas:
