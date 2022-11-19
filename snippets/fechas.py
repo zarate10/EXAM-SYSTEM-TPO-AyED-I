@@ -107,8 +107,9 @@ def verificar_id(matriz):
         if op == matriz[x][0]:
             indice = matriz[x]
             encontrado = True
+    return op
 
-def modificar_fechas(id, matriz) 
+def modificar_fechas(id, matriz):
     matriz[int(id)] = [id,'27-11-2022','T de Frutilla','Final Traba']
     
     print(matriz)
@@ -125,4 +126,5 @@ def modificar_fechas(id, matriz)
         
             
             
-modificar_fechas(matriz_fechas('diogenes'))
+id = verificar_id(matriz_fechas('diogenes'))
+modificar_fechas(id,matriz_fechas('diogenes'))
