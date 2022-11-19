@@ -16,26 +16,31 @@ def login():
     #Función para iniciar sesión en main. Si se encuentra el usuario, se tienen 3 intentos para ingresar la contraseña correcta. Caso contrario se devuelve al menu
     intentos = 0
     while True:
-        user = input('\nIngrese su usuario: ')
-        if usuario_existe(user, path_users):
-            break
-        print('Usuario inexistente.')
+        user = input('\nIngrese su usuario (-1 para finalizar): ')
+        if user == '-1':
+            return False
+        else:
+            if usuario_existe(user, path_users):
+                break
+            else:
+                print('Usuario inexistente.')
         
     try:
         with open(f'{path_users}/{user}.txt','rt',encoding='UTF-8') as datos:
             nombre, pw_account = datos.readline().split(';')
-                        
             while True:
-                pw_input = input('Ingrese la contraseña: ')
-                
-                if pw_input != pw_account: 
-                    intentos += 1
-                    print(f'Contraseña errónea {intentos}/3')
-                else: 
-                    return nombre 
-    
-                if intentos == 3: 
-                    return False 
+                pw_input = input('Ingrese la contraseña (-1 para finalizar): ')
+                if pw_input == '-1':
+                    return False
+                else:
+                    if pw_input != pw_account: 
+                        intentos += 1
+                        print(f'Contraseña errónea {intentos}/3')
+                    else: 
+                        return nombre 
+        
+                    if intentos == 3: 
+                        return False 
                     
     except Exception as e:
         print(f'Ha ocurrido un error: {e}')

@@ -24,7 +24,6 @@ def validar_username():
     #Valida tanto la composición del username
     while True: 
         new_user = input('\nIngrese un nuevo usuario: ')
-
         if not new_user.isalnum(): 
             print('Nombre de usuario debe contener sólo letras y números.')
         elif len(new_user) < 3: 
@@ -66,4 +65,3 @@ def registrar():
             print('Ocurrió un error:', e)
 
     return 
-
