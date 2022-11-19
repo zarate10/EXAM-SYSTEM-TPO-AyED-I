@@ -14,14 +14,14 @@ path_fechas  = './db/fechas'
 usuarios = os.scandir(path_users)
 
 def usuario_existe(new_user, path): 
- 
+    #Función para validar si el txt asignado al usuario que se busca existe o no
     if os.path.isfile(f'{path}/{new_user}.txt'):
         return True 
     
     return False
 
 def validar_username():
-
+    #Valida tanto la composición del username
     while True: 
         new_user = input('\nIngrese un nuevo usuario: ')
 
@@ -36,7 +36,7 @@ def validar_username():
                 return new_user.strip()
 
 def crear_password():
-
+    #Valida su longitud y que no tenga ";" que afecte el split del txt
     while True:
         password = input('Ingrese password: ')
 
@@ -48,6 +48,7 @@ def crear_password():
             return password
 
 def registrar(): 
+    #Registra usuario y contraseña en su txt único
     user = validar_username()
 
     if user: 

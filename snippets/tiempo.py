@@ -17,6 +17,7 @@ def validarBisiesto(year):
   return year % 4 == 0 and year % 100 != 0 or year % 400 == 0
 
 def reset(dia,mes,anio):
+  #Incrementar por mes recorrido
   dia = 1
   if mes != 12:
     mes += 1
@@ -27,6 +28,7 @@ def reset(dia,mes,anio):
   return dia,mes,anio
 
 def comprobacion(dia,mes,anio):
+  #Aumenta en 1 el mes por cada vez que el día llega al límite. Si el mes aumenta luego de 12, se pasa al siguiente año.
   if mes != 2:
       if dia > LIMITES[mes - 1]:
         dia,mes,anio = reset(dia,mes,anio)
