@@ -10,7 +10,7 @@ import os
 import datetime 
 
 path_fechas  = './db/fechas'
-from tiempo import es_menor
+from snippets.tiempo import es_menor
 
 def obtener_id(username): 
     """Se obtiene la última ID del archivo de fechas del usuario"""
@@ -32,7 +32,7 @@ def obtener_id(username):
 def obtener_fecha_examen(): 
     while True: 
         #id,fecha,materia,descripcion
-        dia, mes, anio = input('Ingrese fecha (dd-mm-aa): ').split('-')
+        dia, mes, anio = input('Ingrese fecha (dd-mm-aaaa): ').split('-')
                 
         if not es_menor(anio+mes+dia): 
             return dia, mes, anio 
@@ -48,8 +48,15 @@ def agregar_fecha(username):
         with open(f'{path_fechas}/{username}_fechas.txt', 'at', encoding='UTF-8') as fechas: 
 
             # hacer verifcacion
-            materia = input('Ingrese materia: ') 
-            instancia = input('Ingrese instancia: ')
+            
+            while True:
+                materia = input('Ingrese materia: ')
+                if len(materia) > 0 and len(materia) < 31 and not ';' in materia:
+                    break
+            while True:
+                instancia = input('Ingrese instancia: ')
+                if len(instancia) > 0 and len(instancia) < 16 and not ';' in instancia:
+                    break
             dia, mes, anio = obtener_fecha_examen()
 
             if not id: 
@@ -62,3 +69,26 @@ def agregar_fecha(username):
         print('Ocurrió un error:', e)
 
     return
+
+def matriz_fechas(username):
+    #Retorna la matriz con la fechas del usuario
+    try:
+        with open(f'{path_fechas}/{username}_fechas.txt', 'rt', encoding='UTF-8') as fechas:
+            matriz = [linea.rstrip().split(';') for linea in fechas]
+            
+    except FileExistsError:
+        print(f'No se encuentra el archivo')
+    except OSError:
+        print(f'No se puede leer el archivo')
+    return matriz
+  
+def mostrar_fechas(matriz):
+    #Muestra la matriz de la funcion matriz_fechas
+
+    print('{:<2} | {:<10} | {:<20} | {:<15}'.format('ID','Fecha', 'Materia', 'Instancia'))
+    print('-'*50)
+    for elem in matriz:
+        print('{:<2} | {:<10} | {:<20} | {:<15}'.format(elem[0],elem[1],elem[2],elem[3]))
+            
+
+

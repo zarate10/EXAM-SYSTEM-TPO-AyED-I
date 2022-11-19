@@ -12,6 +12,8 @@ import os
 # módulos propios
 from snippets.registro import registrar
 from snippets.login import login
+from snippets.fechas import agregar_fecha, matriz_fechas,mostrar_fechas
+
 
 cantidad_examenes = 23 
 
@@ -21,6 +23,7 @@ def menu_login(username):
     menu_login = f"""
     Hola de nuevo, {username}. 
     Tenés {cantidad_examenes} fechas de exámenes activas 
+    {mostrar_fechas(matriz_fechas(username))}
 
     1. Agregar nueva fecha de exámen.
     2. Modificar fechas
@@ -34,6 +37,8 @@ def menu_login(username):
     
         if opcion == -1: 
             break 
+        elif opcion == 1:
+            agregar_fecha(username)
 
 def main(): 
 
