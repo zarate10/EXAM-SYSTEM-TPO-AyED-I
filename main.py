@@ -18,13 +18,11 @@ from snippets.fechas import agregar_fecha, matriz_fechas, mostrar_fechas
 def mostrar_opciones(username): 
     fechas = matriz_fechas(username)
     
-    logueado = (f"Hola de nuevo, {username}.", f"Tenés {len(fechas)} fechas de exámenes activas\n")
-    [print(element) for element in logueado]
+    print(f"Hola de nuevo, {username}.\nTenés {len(fechas)} fechas de exámenes activas\n")
 
     mostrar_fechas(fechas)
 
-    opciones = ("\n1. Agregar nueva fecha.", "2. Modificar fecha.", "3. Eliminar fecha.")
-    [print(element) for element in opciones]
+    print("\n1. Agregar nueva fecha.\n2. Modificar fecha.\n3. Eliminar fecha.")
 
     return 
 
