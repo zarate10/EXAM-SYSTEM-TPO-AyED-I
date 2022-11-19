@@ -94,11 +94,11 @@ def matriz_fechas(username):
         
     return '''
 
-def traer_fecha(fecha):
+def id_fecha(matriz):
     while True: 
         try:
             id = int(input('Ingresar ID: '))
-            fecha[id] 
+            matriz[id] 
         except IndexError: 
             print('No existe la ID seleccionada.')
         except Exception as e: 
@@ -119,4 +119,4 @@ def modificar_fechas(id, matriz, username):
         pass 
 
 # traer_fecha(matriz_fechas('diogenes'))
-modificar_fechas(traer_fecha(matriz_fechas('diogenes')), matriz_fechas('diogenes'), 'diogenes')
+modificar_fechas(id_fecha(matriz_fechas('diogenes')), matriz_fechas('diogenes'), 'diogenes')
