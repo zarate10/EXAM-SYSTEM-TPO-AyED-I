@@ -134,20 +134,26 @@ def matriz_fechas(username):
 
     return matriz
     
-def mostrar_fechas(matriz):
+def fechas_user(matriz, mostrar=False):
     """
-    Printea matriz con formateo. 
+    Printea matriz con formateo. Retorna una nueva matriz con los días restantes para ordenarlos.
 
     Args: 
         - matriz con las fechas del usuario
     """
 
-    print('{:<2} | {:<10} | {:<15} | {:<20} | {:<15}'.format('ID','Fecha', "Días restantes", 'Materia', 'Instancia'))
-    print('-'*85)
-    for elem in matriz:
-        print('{:<2} | {:<10} | {:<15} | {:<20} | {:<15}'.format(elem[0], elem[1], dias_restantes(''.join(elem[1].split('-')[::-1])), elem[2], elem[3]))
-        
-    return 
+    matriz_dias_restantes = []
+
+    if mostrar: 
+        print('{:<2} | {:<10} | {:<15} | {:<20} | {:<15}'.format('ID','Fecha', "Días restantes", 'Materia', 'Instancia'))
+        print('-'*85)
+        for elem in matriz:
+            print('{:<2} | {:<10} | {:<15} | {:<20} | {:<15}'.format(elem[0], elem[1], dias_restantes(''.join(elem[1].split('-')[::-1])), elem[2], elem[3]))
+    else: 
+        for elem in matriz: 
+            matriz_fechas.append([elem[0], elem[1], int(dias_restantes(''.join(elem[1].split('-')[::-1]))), elem[2], elem[3]])
+
+    return matriz_dias_restantes
 
 def id_fecha(matriz):
     """

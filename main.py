@@ -12,7 +12,7 @@ import os
 # módulos propios
 from snippets.registro import registrar
 from snippets.login import login
-from snippets.fechas import agregar_fecha, matriz_fechas, mostrar_fechas, modificar_fechas, id_fecha, eliminar_fechas
+from snippets.fechas import agregar_fecha, matriz_fechas, fechas_user, modificar_fechas, id_fecha, eliminar_fechas
 
 # funciones
 def mostrar_opciones(username): 
@@ -21,7 +21,7 @@ def mostrar_opciones(username):
     print(f"Hola de nuevo, {username}.\nTenés {len(fechas)} fechas de exámenes activas\n")
 
     if len(fechas) != 0: 
-        mostrar_fechas(fechas)
+        fechas_user(fechas, mostrar=True)
 
     print("\n1. Agregar nueva fecha.\n2. Modificar fecha.\n3. Eliminar fecha.")
 
@@ -30,6 +30,7 @@ def mostrar_opciones(username):
 
 def menu_login(username): 
     error = False 
+    fechas = matriz_fechas(username)
 
     while True: 
         os.system("cls")
@@ -49,10 +50,10 @@ def menu_login(username):
             elif opcion == 1:
                 agregar_fecha(username)
             elif opcion == 2:
-                modificar_fechas(id_fecha((matriz_fechas(username))),matriz_fechas(username), username)
+                modificar_fechas(id_fecha(fechas), fechas, username)
                 mostrar_opciones(username)
             elif opcion == 3:
-                eliminar_fechas(id_fecha(matriz_fechas(username)), matriz_fechas(username), username)
+                eliminar_fechas(id_fecha(fechas), fechas, username)
 
 
     return 
