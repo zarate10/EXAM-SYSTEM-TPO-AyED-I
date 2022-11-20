@@ -51,7 +51,16 @@ def obtener_fecha_examen():
         if not es_menor(anio + mes + dia): 
             return dia, mes, anio 
 
-def validar_texto(name_option):
+def insertar_datos(name_option): 
+    while True: 
+        option = input(f'Ingresar {name_option}: ')
+            
+        if len(option) > 0 and len(option) < 21 and not ';' in option: 
+            return option 
+
+        print(f'"{name_option.capitalize()}" debe contener como máximo 20 caracteres y no debe contener ";"')
+
+def validar_texto(id, matriz, index_element, name_option):
     """
     Pide un string y verifica que este cumpla con las condiciones correspondientes. 
     Si el string es válido, lo devuelve.
@@ -63,11 +72,15 @@ def validar_texto(name_option):
     """
 
     while True: 
-        option = input(f'Ingrese {name_option}: ')
+        option = input(f'Modificar {name_option} (enter para saltear): ')
+        
+        if len(option) == 0: 
+            return matriz[id][index_element]
+            
         if len(option) > 0 and len(option) < 21 and not ';' in option: 
             return option 
 
-        print(f'"{name_option}" debe contener como maximo 20 caracteres y no debe contener ";"')
+        print(f'"{name_option.capitalize()}" debe contener como máximo 20 caracteres y no debe contener ";"')
 
 def agregar_fecha(username):
     """
@@ -88,8 +101,8 @@ def agregar_fecha(username):
     try: 
         with open(f'{path_fechas}/{username}_fechas.txt', 'at', encoding='UTF-8') as fechas: 
 
-            materia = validar_texto('materia')
-            instancia = validar_texto('instancia')
+            materia = insertar_datos('materia')
+            instancia = insertar_datos('instancia')
             dia, mes, anio = obtener_fecha_examen()
 
             if not id: 
@@ -120,7 +133,7 @@ def matriz_fechas(username):
         print('Ocurrió un error:', e)
 
     return matriz
-
+    
 def mostrar_fechas(matriz):
     """
     Printea matriz con formateo. 
@@ -128,6 +141,7 @@ def mostrar_fechas(matriz):
     Args: 
         - matriz con las fechas del usuario
     """
+
     print('{:<2} | {:<10} | {:<15} | {:<20} | {:<15}'.format('ID','Fecha', "Días restantes", 'Materia', 'Instancia'))
     print('-'*85)
     for elem in matriz:
@@ -157,7 +171,6 @@ def id_fecha(matriz):
         else: 
             return id 
 
-
 def modificar_fechas(id, matriz, username):
     """
     Permite al usuario modificar la fecha de un exámen a través de la ID. 
@@ -171,8 +184,8 @@ def modificar_fechas(id, matriz, username):
     """
  
     fecha = '-'.join(list(obtener_fecha_examen()))
-    materia = validar_texto('materia')
-    instancia = validar_texto('instancia')
+    materia = validar_texto(id, matriz, 2, 'materia')
+    instancia = validar_texto(id, matriz, 3, 'instancia')
 
     matriz[id] = [str(id), fecha, materia, instancia] #Cambiamos la linea que desea modificar el usuario
 
