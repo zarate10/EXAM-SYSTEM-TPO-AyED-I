@@ -13,7 +13,12 @@ path_users = './db/usuarios'
 usuarios = os.scandir(path_users)
 
 def login():
-    #Función para iniciar sesión en main. Si se encuentra el usuario, se tienen 3 intentos para ingresar la contraseña correcta. Caso contrario se devuelve al menu
+    """
+    Función para iniciar sesión en main. 
+    Si se encuentra el usuario, se tienen 3 intentos para ingresar la contraseña correcta. 
+    Caso contrario se devuelve al menu
+    """
+    
     intentos = 0
     while True:
         user = input('\nIngrese su usuario (-1 para finalizar): ')
