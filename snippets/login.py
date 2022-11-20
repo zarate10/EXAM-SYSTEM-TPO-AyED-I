@@ -21,7 +21,7 @@ def login():
     
     intentos = 0
     while True:
-        user = input('\nIngrese su usuario (-1 para finalizar): ')
+        user = input('\nIngrese su usuario (-1 para salir): ')
         if user == '-1':
             return False
         else:
@@ -34,7 +34,7 @@ def login():
         with open(f'{path_users}/{user}.txt','rt',encoding='UTF-8') as datos:
             nombre, pw_account = datos.readline().split(';')
             while True:
-                pw_input = input('Ingrese la contraseña (-1 para finalizar): ')
+                pw_input = input('Ingrese la contraseña (-1 para salir): ')
                 if pw_input == '-1':
                     return False
                 else:
