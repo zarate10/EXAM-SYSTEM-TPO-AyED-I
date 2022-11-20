@@ -13,7 +13,15 @@ path_fechas  = './db/fechas'
 from snippets.tiempo import es_menor, dias_restantes
 
 def obtener_id(username): 
-    """Se obtiene la última ID del archivo de fechas del usuario"""
+    """
+    Busca en el documento de la ruta especificada la última ID. 
+    En caso de encontrarla, la devuelve. 
+
+    Args: 
+        - username tipo string.
+    return: 
+        - entero ID. 
+    """
 
     ultimo_id = 0 # acá guardamos la última ID encontrada
 
@@ -21,15 +29,22 @@ def obtener_id(username):
         with open(f'{path_fechas}/{username}_fechas.txt', 'rt', encoding="UTF-8") as f_fechas: 
 
             for linea in f_fechas: 
-                ultimo_id = linea.strip().split(";")
+                ultimo_id = linea.strip().split(";")[0]
 
     except Exception as e: 
         print('Ocurrió un error:', e)
 
-    return int(ultimo_id[0])
+    return int(ultimo_id)
 
 
 def obtener_fecha_examen(): 
+    """
+    Pregunta al usuario una fecha de exámen. Si la fecha es válida (fecha no anterior al día actual), la devuelve.
+
+    return: 
+        - tupla con día, mes y año. 
+    """
+
     while True: 
         dia, mes, anio = input('Ingrese fecha (dd-mm-aaaa): ').split('-')
                 
@@ -37,6 +52,15 @@ def obtener_fecha_examen():
             return dia, mes, anio 
 
 def validar_texto(name_option):
+    """
+    Pide un string y verifica que este cumpla con las condiciones correspondientes. 
+    Si el string es válido, lo devuelve.
+
+    Args:
+        - name_option: nombre identificador tipo string. 
+    return: 
+        - texto validado
+    """
 
     while True: 
         option = input(f'Ingrese {name_option}: ')
@@ -46,9 +70,18 @@ def validar_texto(name_option):
         print(f'"{name_option}" debe contener como maximo 20 caracteres y no debe contener ";"')
 
 def agregar_fecha(username):
-    
+    """
+    Graba una fecha en el documento del usuario que le pasemos como parámetro.
+    La validación de los datos es realizada a través de funciones externas. 
+
+    Args: 
+        - nombre de usuario tipo string
+    """
+
     id = 0
 
+    # si el archivo contiene líneas, busscamos la última id y sumamos 1.
+    # si no, la id quedará en id = 0. 
     if os.stat(f'{path_fechas}/{username}_fechas.txt').st_size != 0:
         id = obtener_id(username) + 1
 
@@ -71,7 +104,14 @@ def agregar_fecha(username):
     return
 
 def matriz_fechas(username):
-    #Retorna la matriz con la fechas del usuario
+    """
+    Busca el archivo de un usuario existente y la traslada a memoria principal para la manipulación a través de un array.
+
+    Args: 
+        - nombre de usuario tipo string.
+    return: 
+        - un array donde cada elemento representa una fecha con su respectivo ID, FECHA MATERIA e INSTANCIA
+    """
     try:
         with open(f'{path_fechas}/{username}_fechas.txt', 'rt', encoding='UTF-8') as fechas:
             matriz = [linea.rstrip().split(';') for linea in fechas]
@@ -81,10 +121,13 @@ def matriz_fechas(username):
 
     return matriz
 
-
-
 def mostrar_fechas(matriz):
-    #Muestra la matriz de la funcion matriz_fechas
+    """
+    Printea matriz con formateo. 
+
+    Args: 
+        - matriz con las fechas del usuario
+    """
     print('{:<2} | {:<10} | {:<15} | {:<20} | {:<15}'.format('ID','Fecha', "Días restantes", 'Materia', 'Instancia'))
     print('-'*85)
     for elem in matriz:
@@ -93,6 +136,16 @@ def mostrar_fechas(matriz):
     return 
 
 def id_fecha(matriz):
+    """
+    Solicita una ID al usuario y verifica que esta exista. 
+    Si existe, la devuelve.
+
+    Args:
+        - matriz con las fechas del usuario 
+    return: 
+        - id de una fecha específica
+    """
+
     while True: 
         try:
             id = int(input('Ingresar ID: '))
@@ -106,7 +159,16 @@ def id_fecha(matriz):
 
 
 def modificar_fechas(id, matriz, username):
-    #Verificacion de los cambios del usuario
+    """
+    Permite al usuario modificar la fecha de un exámen a través de la ID. 
+    El ID representa el índice de un elemento dentro de la matriz. 
+    Si los datos proporcionados son correctos, graba la nueva información.
+
+    Args:
+        - id: índice de la fecha correspondiente de la matriz.
+        - matriz: matriz con las fechas del usuario.
+        - username de tipo string correspondiente al usuario logueado.
+    """
  
     fecha = '-'.join(list(obtener_fecha_examen()))
     materia = validar_texto('materia')
@@ -120,10 +182,20 @@ def modificar_fechas(id, matriz, username):
             [fechas.write(f'{arr[0]};{arr[1]};{arr[2]};{arr[3]}\n') for arr in matriz]
     except Exception as e:
         print('Ocurrió un error:', e) 
-    else: 
-        pass
 
-def eliminar_fechas(id,matriz,username):
+    return 
+
+def eliminar_fechas(id, matriz, username):
+    """
+    Permite al usuario eliminar la fecha de un exámen a través de la ID. 
+    El ID representa el índice de un elemento dentro de la matriz. 
+    Si los datos proporcionados son correctos, graba la nueva información.
+
+    Args:
+        - id: índice de la fecha correspondiente de la matriz.
+        - matriz: matriz con las fechas del usuario.
+        - username de tipo string correspondiente al usuario logueado.
+    """
     matriz.pop(id)
 
     for i in range(len(matriz)):
@@ -135,6 +207,4 @@ def eliminar_fechas(id,matriz,username):
     except Exception as e:
         print('Ocurrió un error:', e) 
 
-    else: 
-        pass 
-
+    return 
