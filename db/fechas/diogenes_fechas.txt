@@ -1,13 +1,14 @@
 0;30-09-2025;Química;Tercer P
-1;30-09-2024;probando1;1erparcial
+1;30-09-2024;Materia2;1erparcial
 2;10-02-2024;física;3er parcial
-0;30-09-2024;progra;2do parcial
-1;30-09-2024;sis. info;final
-2;12-12-2022;sis. operativos;recuperatorio 2do parcial
-3;12-12-2022;testing apliaciones;final recu
-4;20-12-2025;DyDW;Primer parcial
-5;19-11-2023;SI I;Segundo parcial
-6;02-10-2023;Tourisss;Touris recu
-7;30-09-2023;Zarate;final Z
-8;27-11-2022;T de Frutilla;Final Traba
-9;30-09-2025;Química;Tercer P10;12-12-2022;False;False
+3;30-09-2024;progra;2do parcial
+4;30-09-2024;sis. info;final
+5;12-12-2022;sis. operativos;recuperatorio 2do parcial
+6;12-12-2022;testing apliaciones;final recu
+7;20-12-2025;DyDW;Primer parcial
+8;19-11-2023;SI I;Segundo parcial
+9;02-10-2023;Materia3;Touris recu
+10;30-09-2023;Materia4;final Z
+11;27-11-2022;Materia5;Final Traba
+12;30-09-2025;Química3;Tercer P10
+13;24-05-2023;pepe;probando1

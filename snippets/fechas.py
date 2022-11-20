@@ -134,7 +134,7 @@ def matriz_fechas(username):
 
     return matriz
     
-def fechas_user(matriz, mostrar=False):
+def fechas_user(matriz, mostrar=False, ordenado=False):
     """
     Printea matriz con formateo. Retorna una nueva matriz con los días restantes para ordenarlos.
 
@@ -148,12 +148,40 @@ def fechas_user(matriz, mostrar=False):
         print('{:<2} | {:<10} | {:<15} | {:<20} | {:<15}'.format('ID','Fecha', "Días restantes", 'Materia', 'Instancia'))
         print('-'*85)
         for elem in matriz:
-            print('{:<2} | {:<10} | {:<15} | {:<20} | {:<15}'.format(elem[0], elem[1], dias_restantes(''.join(elem[1].split('-')[::-1])), elem[2], elem[3]))
+            if ordenado: 
+                print('{:<2} | {:<10} | {:<15} | {:<20} | {:<15}'.format(elem[0], elem[1], elem[2], elem[3], elem[4]))
+            else:
+                print('{:<2} | {:<10} | {:<15} | {:<20} | {:<15}'.format(elem[0], elem[1], dias_restantes(''.join(elem[1].split('-')[::-1])), elem[2], elem[3]))
     else: 
-        for elem in matriz: 
-            matriz_fechas.append([elem[0], elem[1], int(dias_restantes(''.join(elem[1].split('-')[::-1]))), elem[2], elem[3]])
+        for elem in matriz:
+            matriz_dias_restantes.append([elem[0], elem[1], int(dias_restantes(''.join(elem[1].split('-')[::-1]))), elem[2], elem[3]])
+ 
+        return matriz_dias_restantes
 
-    return matriz_dias_restantes
+def ordenar_fechas(matriz): 
+
+    f_desord = matriz.copy()
+    f_ord = []
+
+    while len(f_desord) > 0: 
+        menos_dia = f_desord[0][2]
+        i_menos_dias = 0
+
+        for fecha in f_desord:
+
+            if fecha[2] <= menos_dia: 
+                menos_dia = fecha[2]
+                i_menos_dias = f_desord.index(fecha)
+        
+        f_ord.append(f_desord[i_menos_dias])
+        f_desord.pop(i_menos_dias)
+
+    for f in f_ord:
+        print(f)
+    return f_ord
+
+# fechas_user(ordenar_fechas(fechas_user(matriz_fechas('diogenes'))), mostrar=True)
+# fechas_user(ordenar_fechas(fechas_user(matriz_fechas('diogenes'))), ordenado=True, mostrar=True)
 
 def id_fecha(matriz):
     """

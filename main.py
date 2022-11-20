@@ -12,18 +12,22 @@ import os
 # módulos propios
 from snippets.registro import registrar
 from snippets.login import login
-from snippets.fechas import agregar_fecha, matriz_fechas, fechas_user, modificar_fechas, id_fecha, eliminar_fechas
+from snippets.fechas import agregar_fecha, matriz_fechas, fechas_user, modificar_fechas, id_fecha, eliminar_fechas, ordenar_fechas
 
 # funciones
-def mostrar_opciones(username): 
-    fechas = matriz_fechas(username)
+def mostrar_opciones(username, ordenar): 
     
+    fechas = matriz_fechas(username)
+
+    if ordenar: 
+        fechas = ordenar_fechas(fechas_user(matriz_fechas(username)))
+
     print(f"Hola de nuevo, {username}.\nTenés {len(fechas)} fechas de exámenes activas\n")
 
     if len(fechas) != 0: 
-        fechas_user(fechas, mostrar=True)
+        fechas_user(fechas, mostrar=True, ordenado=ordenar)
 
-    print("\n1. Agregar nueva fecha.\n2. Modificar fecha.\n3. Eliminar fecha.")
+    print("\n1. Agregar nueva fecha.\n2. Modificar fecha.\n3. Ordenar fechas.\n4. Eliminar fecha.")
 
     return 
 
@@ -31,10 +35,11 @@ def mostrar_opciones(username):
 def menu_login(username): 
     error = False 
     fechas = matriz_fechas(username)
+    ordenar = False
 
     while True: 
         os.system("cls")
-        mostrar_opciones(username)
+        mostrar_opciones(username, ordenar)
 
         if error: 
             print('Ocurrió algo inesperado.\n')
@@ -51,10 +56,12 @@ def menu_login(username):
                 agregar_fecha(username)
             elif opcion == 2:
                 modificar_fechas(id_fecha(fechas), fechas, username)
-                mostrar_opciones(username)
+                mostrar_opciones(username, ordenar)
             elif opcion == 3:
+                ordenar = True 
+                mostrar_opciones(username, ordenar)
+            elif opcion == 4:
                 eliminar_fechas(id_fecha(fechas), fechas, username)
-
 
     return 
 
