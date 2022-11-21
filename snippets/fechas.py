@@ -176,12 +176,7 @@ def ordenar_fechas(matriz):
         f_ord.append(f_desord[i_menos_dias])
         f_desord.pop(i_menos_dias)
 
-    for f in f_ord:
-        print(f)
     return f_ord
-
-# fechas_user(ordenar_fechas(fechas_user(matriz_fechas('diogenes'))), mostrar=True)
-# fechas_user(ordenar_fechas(fechas_user(matriz_fechas('diogenes'))), ordenado=True, mostrar=True)
 
 def id_fecha(matriz):
     """
