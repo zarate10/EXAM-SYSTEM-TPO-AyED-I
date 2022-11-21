@@ -6,8 +6,12 @@
 5;12-12-2022;sis. operativos;recuperatorio 2do parcial
 6;12-12-2022;testing apliaciones;final recu
 7;20-12-2025;DyDW;Primer parcial
-8;19-11-2023;SI I;Segundo parcial
+8;22-11-2022;Sistemas de info;Final
 9;02-10-2023;Materia3;Touris recu
 10;30-09-2023;Materia4;final Z
 11;27-11-2022;Materia5;Final Traba
 12;30-09-2025;Química3;Tercer P10
+<<<<<<< HEAD
+=======
+13;21-05-2029;pepe;probando1
+>>>>>>> 2e46d1eb9fa3755ec5e61f465617623ae7cfbaf2
