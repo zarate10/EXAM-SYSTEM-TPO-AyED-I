@@ -9,7 +9,11 @@
 import os
 from snippets.registro import usuario_existe
 
-path_users = './db/usuarios'
+sep = os.path.sep
+dir_actual = os.path.dirname(os.path.abspath(__file__))
+dir = sep.join(dir_actual.split(sep)[:-1])
+
+path_users = dir + '/db/usuarios'
 usuarios = os.scandir(path_users)
 
 def login():

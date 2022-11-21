@@ -9,7 +9,11 @@
 import os 
 import datetime 
 
-path_fechas  = './db/fechas'
+sep = os.path.sep
+dir_actual = os.path.dirname(os.path.abspath(__file__))
+dir = sep.join(dir_actual.split(sep)[:-1])
+
+path_fechas  = dir + '/db/fechas'
 from snippets.tiempo import es_menor, dias_restantes
 
 def obtener_id(username): 

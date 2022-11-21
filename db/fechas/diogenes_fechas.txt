@@ -11,4 +11,3 @@
 10;30-09-2023;Materia4;final Z
 11;27-11-2022;Materia5;Final Traba
 12;30-09-2025;Química3;Tercer P10
-13;24-05-2023;pepe;probando1

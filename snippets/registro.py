@@ -8,9 +8,14 @@
 
 import os 
 from os import path 
+import os
 
-path_users = './db/usuarios'
-path_fechas  = './db/fechas'
+sep = os.path.sep
+dir_actual = os.path.dirname(os.path.abspath(__file__))
+dir = sep.join(dir_actual.split(sep)[:-1])
+
+path_users = dir + '/db/usuarios'
+path_fechas  = dir + '/db/fechas'
 usuarios = os.scandir(path_users)
 
 def usuario_existe(new_user, path): 
