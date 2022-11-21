@@ -11,7 +11,3 @@
 10;30-09-2023;Materia4;final Z
 11;27-11-2022;Materia5;Final Traba
 12;30-09-2025;Química3;Tercer P10
-<<<<<<< HEAD
-=======
-13;21-05-2029;pepe;probando1
->>>>>>> 2e46d1eb9fa3755ec5e61f465617623ae7cfbaf2
