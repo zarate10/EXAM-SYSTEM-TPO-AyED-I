@@ -76,9 +76,9 @@ def validar_texto(id, matriz, index_element, name_option):
         
         if len(option) == 0: 
             return matriz[id][index_element]
-            
-        if len(option) > 0 and len(option) < 21 and not ';' in option: 
-            return option 
+        else: 
+            if len(option) > 0 and len(option) < 21 and not ';' in option: 
+                return option 
 
         print(f'"{name_option.capitalize()}" debe contener como máximo 20 caracteres y no debe contener ";"')
 
