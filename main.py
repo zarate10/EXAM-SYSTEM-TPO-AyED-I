@@ -27,7 +27,7 @@ def mostrar_opciones(username, ordenar):
     if len(fechas) != 0: 
         fechas_user(fechas, mostrar=True, ordenado=ordenar)
 
-    print("\n1. Agregar nueva fecha.\n2. Modificar fecha.\n3. Ordenar fechas.\n4. Eliminar fecha.")
+    print("\n1. Agregar nueva fecha.\n2. Modificar registro.\n3. Ordenar fechas.\n4. Eliminar fecha.")
 
     return 
 
