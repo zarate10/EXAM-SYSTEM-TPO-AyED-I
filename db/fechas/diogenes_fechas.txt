@@ -1,4 +1,4 @@
-0;20-12-2025;Química;Tercer P
+0;23-11-2022;123;123
 1;30-09-2024;Materia2;1erparcial
 2;10-02-2024;física;3er parcial
 3;30-09-2024;progra;2do parcial
