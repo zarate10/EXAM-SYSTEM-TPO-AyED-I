@@ -50,10 +50,13 @@ def obtener_fecha_examen():
     """
 
     while True: 
-        dia, mes, anio = input('Ingrese fecha (dd-mm-aaaa): ').split('-')
-                
-        if not es_menor(anio + mes + dia): 
-            return dia, mes, anio 
+        try: 
+            dia, mes, anio = input('Ingrese fecha (dd-mm-aaaa): ').split('-')
+        except: 
+            print('Ocurrió un error con el formato. Intente colocarlo como se lo indica arriba.') 
+        else: 
+            if not es_menor(anio + mes + dia): 
+                return dia, mes, anio 
 
 def insertar_datos(name_option): 
     while True: 
@@ -132,11 +135,10 @@ def matriz_fechas(username):
     try:
         with open(f'{path_fechas}/{username}_fechas.txt', 'rt', encoding='UTF-8') as fechas:
             matriz = [linea.rstrip().split(';') for linea in fechas]
-            
     except Exception as e:
         print('Ocurrió un error:', e)
-
-    return matriz
+    else: 
+        return matriz
     
 def fechas_user(matriz, mostrar=False, ordenado=False):
     """

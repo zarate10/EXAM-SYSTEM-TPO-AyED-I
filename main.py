@@ -15,6 +15,11 @@ from snippets.login import login
 from snippets.fechas import agregar_fecha, matriz_fechas, fechas_user, modificar_fechas, id_fecha, eliminar_fechas, ordenar_fechas
 
 # funciones
+def borrar_pantalla():
+    '''Limpia la pantalla'''    
+    os.system('cls' if os.name == 'nt' else 'clear')
+    return
+
 def mostrar_opciones(username, ordenar): 
     
     fechas = matriz_fechas(username)
@@ -34,11 +39,12 @@ def mostrar_opciones(username, ordenar):
 
 def menu_login(username): 
     error = False 
-    fechas = matriz_fechas(username)
     ordenar = False
 
     while True: 
-        os.system("cls")
+        fechas = matriz_fechas(username)
+
+        borrar_pantalla()
         mostrar_opciones(username, ordenar)
 
         if error: 
@@ -69,7 +75,7 @@ def main():
     error = False 
 
     while True: 
-        os.system('cls')
+        borrar_pantalla()
 
         if error: 
             print('Ocurrió algo inesperado.\n')

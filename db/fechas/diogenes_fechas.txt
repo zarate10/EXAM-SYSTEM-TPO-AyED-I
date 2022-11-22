@@ -1,4 +1,4 @@
-0;30-09-2025;Química;Tercer P
+0;20-12-2025;Química;Tercer P
 1;30-09-2024;Materia2;1erparcial
 2;10-02-2024;física;3er parcial
 3;30-09-2024;progra;2do parcial
@@ -10,4 +10,4 @@
 9;02-10-2023;Materia3;Touris recu
 10;30-09-2023;Materia4;final Z
 11;27-11-2022;Materia5;Final Traba
-12;30-09-2025;Química3;Tercer P10
+12;20-02-2025;Química3;Tercer P10
