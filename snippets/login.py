@@ -21,6 +21,8 @@ def login():
     Función para iniciar sesión en main. 
     Si se encuentra el usuario, se tienen 3 intentos para ingresar la contraseña correcta. 
     Caso contrario se devuelve al menu
+    Precondición: n/a 
+    Postcondición: Valida user y lo devuelve para mantener sesión, caso contrario retorna False.
     """
     
     intentos = 0
