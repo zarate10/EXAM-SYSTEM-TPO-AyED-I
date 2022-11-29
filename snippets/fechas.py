@@ -23,8 +23,8 @@ def obtener_id(username):
 
     Args: 
         - username tipo string.
-    return: 
-        - entero ID. 
+    Precondición: Username existente en path_fechas
+    Postcondición: Retornar el ID de path_fechas/usuario.txt
     """
     ultimo_id = 0 # acá guardamos la última ID encontrada
     try: 
@@ -40,8 +40,8 @@ def obtener_fecha_examen():
     """
     Pregunta al usuario una fecha de exámen. Si la fecha es válida (fecha no anterior al día actual), la devuelve.
 
-    return: 
-        - tupla con día, mes y año. 
+    Precondición: La fecha ingresada debe ser a futuro.
+    Postcondición: Retornar tupla con año, mes y día.
     """
     while True: 
         try: 
@@ -53,6 +53,11 @@ def obtener_fecha_examen():
                 return dia, mes, anio 
 
 def insertar_datos(name_option): 
+    '''
+    Verifica que el dato ingresado (input para materia o instancia) sea de composición válida.
+    Precondición: Ingresar un string referido al input solicitado
+    Postcondición: Retornar el string previamente ingresado (si es válido)     
+    '''
     while True: 
         option = input(f'Ingresar {name_option}: ')
         if len(option) > 0 and len(option) < 21 and not ';' in option: 
@@ -66,8 +71,8 @@ def validar_texto(id, matriz, index_element, name_option):
 
     Args:
         - name_option: nombre identificador tipo string. 
-    return: 
-        - texto validado
+    Precondición: ID entero, matriz válida, index_element entero y name_option de longitud válida.
+    Postcondición: Retornar matriz sin cambios si la opción está vacía, o con cambios si se ingresó una opción.
     """
 
     while True: 
@@ -88,11 +93,13 @@ def agregar_fecha(username):
 
     Args: 
         - nombre de usuario tipo string
+    Precondición: Username string válido.
+    Postcondición: Escribir la fecha ingresada en su correcto fechas.txt. 
     """
 
     id = 0
 
-    # si el archivo contiene líneas, busscamos la última id y sumamos 1.
+    # si el archivo contiene líneas, buscamos la última id y sumamos 1.
     # si no, la id quedará en id = 0. 
     if os.stat(f'{path_fechas}/{username}_fechas.txt').st_size != 0:
         id = obtener_id(username) + 1
@@ -103,10 +110,6 @@ def agregar_fecha(username):
             materia = insertar_datos('materia')
             instancia = insertar_datos('instancia')
             dia, mes, anio = obtener_fecha_examen()
-
-            if not id: 
-                fechas.write(f'{id};{dia}-{mes}-{anio};{materia};{instancia}\n')
-                return 
 
             fechas.write(f'{id};{dia}-{mes}-{anio};{materia};{instancia}\n')
 
@@ -121,8 +124,8 @@ def matriz_fechas(username):
 
     Args: 
         - nombre de usuario tipo string.
-    return: 
-        - un array donde cada elemento representa una fecha con su respectivo ID, FECHA MATERIA e INSTANCIA
+    Precondición: TXT con datos separados por ";".
+    Postcondición: Retornar matriz con arrays cuyos elementos están separados.
     """
     matriz = []
     try:
@@ -147,11 +150,18 @@ def fechas_user(matriz):
 
     Args: 
         - matriz con las fechas del usuario
+    Precondición: Matriz de fechas preexistente
+    Postcondición: Mostrar por pantalla las fechas con un formateo especial.
     """
     for arr in matriz:
         print(arr)
 
 def ordenar_fechas(matriz): 
+    """
+    Precondición: Matriz preexistente.
+    Postcondición: Retornar matriz reordenada de fecha más próxima hacia más lejana.
+    
+    """
     f_desord = matriz.copy()
     f_ord = [restante for restante in sorted(f_desord, key=lambda restante: restante[2])]
     return f_ord
@@ -163,8 +173,8 @@ def id_fecha(matriz):
 
     Args:
         - matriz con las fechas del usuario 
-    return: 
-        - id de una fecha específica
+    Precondición: Matriz preexistente
+    Postcondición: Retornar ID (entero) si existe.
     """
 
     while True: 
@@ -188,6 +198,8 @@ def modificar_fechas(id, matriz, username):
         - id: índice de la fecha correspondiente de la matriz.
         - matriz: matriz con las fechas del usuario.
         - username de tipo string correspondiente al usuario logueado.
+    Precondición: ID entero, matriz preexistente y username válido.
+    Postcondición: Reescribe la fecha con el ID proporcionado.
     """
  
     fecha = '-'.join(list(obtener_fecha_examen()))
@@ -216,6 +228,8 @@ def eliminar_fechas(id, matriz, username):
         - id: índice de la fecha correspondiente de la matriz.
         - matriz: matriz con las fechas del usuario.
         - username de tipo string correspondiente al usuario logueado.
+    Precondición: ID entero, matriz válida y username válido.
+    Postcondición: Reescribir TXT con la nueva matriz (indice ingresado removido).
     """
     matriz.pop(id)
 

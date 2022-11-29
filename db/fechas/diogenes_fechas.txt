@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 0;20-12-2023;AyED;Final
 1;12-12-2026;DyDW;2do parcial
 2;20-04-2025;20-04-2025;ASDA
 3;30-09-2026;asd;fsd
+=======
+0;23-11-2022;123;123
+1;30-09-2024;Materia2;1erparcial
+2;10-02-2024;física;3er parcial
+3;30-09-2024;progra;2do parcial
+>>>>>>> 08b63523d61db74f2a2ce9feb06bf3475edc3e8b
 4;30-09-2024;sis. info;final
 5;12-12-2022;sis. operativos;recuperatorio 2do parcial
 6;12-12-2022;testing apliaciones;final recu
