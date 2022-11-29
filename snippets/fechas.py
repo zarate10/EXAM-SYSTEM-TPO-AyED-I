@@ -26,20 +26,15 @@ def obtener_id(username):
     return: 
         - entero ID. 
     """
-
     ultimo_id = 0 # acá guardamos la última ID encontrada
-
     try: 
         with open(f'{path_fechas}/{username}_fechas.txt', 'rt', encoding="UTF-8") as f_fechas: 
-
             for linea in f_fechas: 
                 ultimo_id = linea.strip().split(";")[0]
-
     except Exception as e: 
         print('Ocurrió un error:', e)
-
-    return int(ultimo_id)
-
+    else: 
+        return int(ultimo_id)
 
 def obtener_fecha_examen(): 
     """
@@ -48,7 +43,6 @@ def obtener_fecha_examen():
     return: 
         - tupla con día, mes y año. 
     """
-
     while True: 
         try: 
             dia, mes, anio = input('Ingrese fecha (dd-mm-aaaa): ').split('-')
@@ -61,10 +55,8 @@ def obtener_fecha_examen():
 def insertar_datos(name_option): 
     while True: 
         option = input(f'Ingresar {name_option}: ')
-            
         if len(option) > 0 and len(option) < 21 and not ';' in option: 
             return option 
-
         print(f'"{name_option.capitalize()}" debe contener como máximo 20 caracteres y no debe contener ";"')
 
 def validar_texto(id, matriz, index_element, name_option):
@@ -132,6 +124,7 @@ def matriz_fechas(username):
     return: 
         - un array donde cada elemento representa una fecha con su respectivo ID, FECHA MATERIA e INSTANCIA
     """
+    matriz = []
     try:
         with open(f'{path_fechas}/{username}_fechas.txt', 'rt', encoding='UTF-8') as fechas:
             matriz = [linea.rstrip().split(';') for linea in fechas]
@@ -139,49 +132,28 @@ def matriz_fechas(username):
         print('Ocurrió un error:', e)
     else: 
         return matriz
-    
-def fechas_user(matriz, mostrar=False, ordenado=False):
+
+def arr_dias_restantes(matriz): 
+    """
+    En base al segundo elemento de los arrays en matriz (fecha en formato dd-mm-aaaa) retorna una lista
+    de enteros relativos al día restante de dicha fecha. 
+    """
+    dias_remaining = [dias_restantes(''.join(fecha[1].split('-')[::-1])) for fecha in matriz]
+    print(dias_remaining)
+
+def fechas_user(matriz):
     """
     Printea matriz con formateo. Retorna una nueva matriz con los días restantes para ordenarlos.
 
     Args: 
         - matriz con las fechas del usuario
     """
-
-    matriz_dias_restantes = []
-
-    if mostrar: 
-        print('{:<2} | {:<10} | {:<15} | {:<20} | {:<15}'.format('ID','Fecha', "Días restantes", 'Materia', 'Instancia'))
-        print('-'*85)
-        for elem in matriz:
-            if ordenado: 
-                print('{:<2} | {:<10} | {:<15} | {:<20} | {:<15}'.format(elem[0], elem[1], elem[2], elem[3], elem[4]))
-            else:
-                print('{:<2} | {:<10} | {:<15} | {:<20} | {:<15}'.format(elem[0], elem[1], dias_restantes(''.join(elem[1].split('-')[::-1])), elem[2], elem[3]))
-    else: 
-        for elem in matriz:
-            matriz_dias_restantes.append([elem[0], elem[1], int(dias_restantes(''.join(elem[1].split('-')[::-1]))), elem[2], elem[3]])
- 
-        return matriz_dias_restantes
+    for arr in matriz:
+        print(arr)
 
 def ordenar_fechas(matriz): 
-
     f_desord = matriz.copy()
-    f_ord = []
-
-    while len(f_desord) > 0: 
-        menos_dia = f_desord[0][2]
-        i_menos_dias = 0
-
-        for fecha in f_desord:
-
-            if fecha[2] <= menos_dia: 
-                menos_dia = fecha[2]
-                i_menos_dias = f_desord.index(fecha)
-        
-        f_ord.append(f_desord[i_menos_dias])
-        f_desord.pop(i_menos_dias)
-
+    f_ord = [restante for restante in sorted(f_desord, key=lambda restante: restante[2])]
     return f_ord
 
 def id_fecha(matriz):
@@ -227,7 +199,8 @@ def modificar_fechas(id, matriz, username):
     #Sacamos los datos del archivo e ingresamos la matriz con las actualizaciones del usuario
     try: 
         with open(f'{path_fechas}/{username}_fechas.txt', 'wt', encoding='UTF-8') as fechas:
-            [fechas.write(f'{arr[0]};{arr[1]};{arr[2]};{arr[3]}\n') for arr in matriz]
+            for arr in matriz:
+                fechas.write(f'{arr[0]};{arr[1]};{arr[2]};{arr[3]}\n') 
     except Exception as e:
         print('Ocurrió un error:', e) 
 
@@ -251,7 +224,8 @@ def eliminar_fechas(id, matriz, username):
 
     try: 
         with open(f'{path_fechas}/{username}_fechas.txt', 'wt', encoding='UTF-8') as fechas:
-            [fechas.write(f'{arr[0]};{arr[1]};{arr[2]};{arr[3]}\n') for arr in matriz]
+            for arr in matriz:
+                fechas.write(f'{arr[0]};{arr[1]};{arr[2]};{arr[3]}\n')
     except Exception as e:
         print('Ocurrió un error:', e) 
 

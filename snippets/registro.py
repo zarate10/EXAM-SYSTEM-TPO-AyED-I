@@ -8,7 +8,6 @@
 
 import os 
 from os import path 
-import os
 
 sep = os.path.sep
 dir_actual = os.path.dirname(os.path.abspath(__file__))
@@ -40,16 +39,23 @@ def validar_username():
     Si el usuario no está registrado y cumple con los requisitos de validación, retorna el nuevo usuario.
     """
     while True: 
-        new_user = input('\nIngrese un nuevo usuario: ')
-        if not new_user.isalnum(): 
-            print('Nombre de usuario debe contener sólo letras y números.')
-        elif len(new_user) < 3: 
-            print('El nombre de usuario debe ser mayor a tres caracteres.')
-        elif usuario_existe(new_user, path_users): 
-            print('El nombre de usuario ya existe')
+        try: 
+            new_user = input('\nIngrese un nuevo usuario: ')
+        except (KeyboardInterrupt, EOFError):
+            print('')
+            quit()
+        except Exception as e: 
+            print('Ocurrió un error inesperado.')
         else: 
-            if not usuario_existe(new_user, path_users): 
-                return new_user.strip()
+            if not new_user.isalnum(): 
+                print('Nombre de usuario debe contener sólo letras y números.')
+            elif len(new_user) < 3: 
+                print('El nombre de usuario debe ser mayor a tres caracteres.')
+            elif usuario_existe(new_user, path_users): 
+                print('El nombre de usuario ya existe')
+            else: 
+                if not usuario_existe(new_user, path_users): 
+                    return new_user.strip()
 
 def crear_password():
     """
@@ -57,14 +63,20 @@ def crear_password():
     En caso de que cumpla con los susodichos requisitos, devuelve la nueva password. 
     """
     while True:
-        password = input('Ingrese password: ')
-
-        if ';' in password: 
-            print('Error, el usuario no debe contener ";"')
-        elif len(password) < 5:
-            print('La contraseña debe tener más de cinco caracteres.') 
+        try: 
+            password = input('Ingrese password: ')
+        except (KeyboardInterrupt, EOFError):
+            print('')
+            quit()
+        except Exception as e: 
+            print('Ocurrió un error inesperado.')
         else: 
-            return password
+            if ';' in password: 
+                print('Error, el usuario no debe contener ";"')
+            elif len(password) < 5:
+                print('La contraseña debe tener más de cinco caracteres.') 
+            else: 
+                return password
 
 def registrar(): 
     """

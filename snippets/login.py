@@ -25,31 +25,45 @@ def login():
     
     intentos = 0
     while True:
-        user = input('\nIngrese su usuario (-1 para salir): ')
-        if user == '-1':
-            return False
-        else:
-            if usuario_existe(user, path_users):
-                break
+        try: 
+            user = input('\nIngrese su usuario (-1 para salir): ')
+        except (KeyboardInterrupt, EOFError):
+            print('')
+            quit()
+        except Exception as e: 
+            print('Ocurrió un error inesperado.')
+        else: 
+            if user == '-1':
+                return False
             else:
-                print('Usuario inexistente.')
+                if usuario_existe(user, path_users):
+                    break
+                else:
+                    print('Usuario inexistente.')
         
     try:
         with open(f'{path_users}/{user}.txt','rt',encoding='UTF-8') as datos:
             nombre, pw_account = datos.readline().split(';')
             while True:
-                pw_input = input('Ingrese la contraseña (-1 para salir): ')
-                if pw_input == '-1':
-                    return False
-                else:
-                    if pw_input != pw_account: 
-                        intentos += 1
-                        print(f'Contraseña errónea {intentos}/3')
-                    else: 
-                        return nombre 
-        
-                    if intentos == 3: 
-                        return False 
+                try: 
+                    pw_input = input('Ingrese la contraseña (-1 para salir): ')
+                except (KeyboardInterrupt, EOFError):
+                    print('')
+                    quit()
+                except Exception as e: 
+                    print('Ocurrió un error inesperado.')
+                else: 
+                    if pw_input == '-1':
+                        return False
+                    else:
+                        if pw_input != pw_account: 
+                            intentos += 1
+                            print(f'Contraseña errónea {intentos}/3')
+                        else: 
+                            return nombre 
+            
+                        if intentos == 3: 
+                            return False 
                     
     except Exception as e:
         print(f'Ha ocurrido un error: {e}')
