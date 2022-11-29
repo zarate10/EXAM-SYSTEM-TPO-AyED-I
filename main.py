@@ -12,7 +12,7 @@ import os
 # módulos propios
 from snippets.registro import registrar
 from snippets.login import login
-from snippets.fechas import agregar_fecha, matriz_fechas, fechas_user, modificar_fechas, id_fecha, eliminar_fechas, ordenar_fechas, arr_dias_restantes
+from snippets.fechas import agregar_fecha, matriz_fechas, fechas_user, modificar_fechas, id_fecha, eliminar_fechas, arr_dias_restantes
 
 # funciones
 def borrar_pantalla():
@@ -22,27 +22,23 @@ def borrar_pantalla():
 
 def mostrar_opciones(fechas, username, ordenar): 
 
-    if ordenar: 
-        fechas = ordenar_fechas(fechas_user(fechas))
-
-    print(f"Hola de nuevo, {username}.\nTenés {len(fechas)} fechas de exámenes activas\n")
+    print(f"Hola de nuevo, {username}.\nTenés {len(matriz_fechas(username))} fechas de exámenes activas\n")
 
     if len(fechas) != 0: 
-        fechas_user(fechas)
+        fechas_user(fechas, ordenar)
 
-    print("\n1. Agregar nueva fecha.\n2. Modificar registro.\n3. Ordenar fechas.\n4. Eliminar fecha.")
+    print("\n1. Agregar nueva fecha.\n2. Modificar registro.\n3. Ordenar fechas x días restantes.\n4. Eliminar fecha.")
 
     return 
 
 def menu_login(username): 
     error = False 
-    ordenar = False
+    ordenado = False 
 
     while True: 
         fechas = matriz_fechas(username)
         borrar_pantalla()
-        print(arr_dias_restantes(fechas))
-        mostrar_opciones(fechas, username, ordenar)
+        mostrar_opciones(fechas, username, ordenado)
 
         if error: 
             print('Ocurrió algo inesperado.\n')
@@ -61,10 +57,10 @@ def menu_login(username):
                 agregar_fecha(username)
             elif opcion == 2:
                 modificar_fechas(id_fecha(fechas), fechas, username)
-                mostrar_opciones(fechas, username, ordenar)
+                mostrar_opciones(fechas, username, ordenado)
             elif opcion == 3:
-                ordenar = True 
-                mostrar_opciones(fechas, username, ordenar)
+                ordenado = True
+                mostrar_opciones(fechas, username, ordenado)
             elif opcion == 4:
                 eliminar_fechas(id_fecha(fechas), fechas, username)
     return 

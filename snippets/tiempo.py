@@ -103,7 +103,8 @@ def dias_restantes(fecha):
 
     Devuelve la cantidad de dias restantes para llegar a la fecha
     """
+    fecha = fecha.split('-')[::-1]
     today = dt.date.today()
-    dias = diasEntre(today.day,today.month,today.year,int(fecha[6:]),int(fecha[4:6]),int(fecha[:4]))
-
-    return dias
+    someday = dt.date(int(fecha[0]), int(fecha[1]), int(fecha[2]))
+    diff = (someday - today).days
+    return diff

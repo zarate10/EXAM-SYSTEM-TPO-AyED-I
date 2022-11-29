@@ -1,17 +1,15 @@
 0;20-12-2023;AyED;Final
 1;12-12-2026;DyDW;2do parcial
 2;20-04-2025;20-04-2025;ASDA
-3;30-09-2026;asd;fsd
-0;23-11-2022;123;123
-1;30-09-2024;Materia2;1erparcial
-2;10-02-2024;física;3er parcial
-3;30-09-2024;progra;2do parcial
-4;30-09-2024;sis. info;final
-5;12-12-2022;sis. operativos;recuperatorio 2do parcial
-6;12-12-2022;testing apliaciones;final recu
-7;20-12-2025;DyDW;Primer parcial
-8;22-11-2022;Sistemas de info;Final
-9;02-10-2023;Materia3;Touris recu
-10;30-09-2023;Materia4;final Z
-11;27-11-2022;Materia5;Final Traba
-12;20-02-2025;Química3;Tercer P10
+3;30-09-2024;sis. info;final
+4;12-12-2022;sis. operativos;recuperatorio 2do parcial
+5;12-12-2022;testing apliaciones;final recu
+6;20-12-2025;DyDW;Primer parcial
+7;22-11-2022;Sistemas de info;Final
+8;02-10-2023;Materia3;Touris recu
+9;30-09-2023;Materia4;final Z
+10;27-11-2022;Materia5;Final Traba
+11;20-02-2025;Química3;Tercer P1013
+12;20-12-2932;asd;sfd
+13;20-09-9321;assdf;dfg
+14;20-09-9212; ;

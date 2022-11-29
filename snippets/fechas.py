@@ -141,30 +141,34 @@ def arr_dias_restantes(matriz):
     En base al segundo elemento de los arrays en matriz (fecha en formato dd-mm-aaaa) retorna una lista
     de enteros relativos al día restante de dicha fecha. 
     """
-    dias_remaining = [dias_restantes(''.join(fecha[1].split('-')[::-1])) for fecha in matriz]
-    print(dias_remaining)
+    dias_remaining = [dias_restantes(fecha[1]) for fecha in matriz]
+    arr_dias_rest = []
 
-def fechas_user(matriz):
+    for arr in matriz:
+        arr_dias_rest.append([arr[0], arr[1], dias_remaining[int(arr[0])], arr[2], arr[3]])
+
+    return arr_dias_rest
+
+def fechas_user(matriz, ordenar=False):
     """
-    Printea matriz con formateo. Retorna una nueva matriz con los días restantes para ordenarlos.
+    Printea matriz con formateo.
 
     Args: 
         - matriz con las fechas del usuario
     Precondición: Matriz de fechas preexistente
     Postcondición: Mostrar por pantalla las fechas con un formateo especial.
     """
-    for arr in matriz:
-        print(arr)
-
-def ordenar_fechas(matriz): 
-    """
-    Precondición: Matriz preexistente.
-    Postcondición: Retornar matriz reordenada de fecha más próxima hacia más lejana.
+    days = arr_dias_restantes(matriz)
     
-    """
-    f_desord = matriz.copy()
-    f_ord = [restante for restante in sorted(f_desord, key=lambda restante: restante[2])]
-    return f_ord
+    print('{:<3} | {:<10} | {:<15} | {:<20} | {:<20}'.format('ID', 'Fecha', 'Días restantes', 'Materia', 'Instancia'))
+    if not ordenar: 
+        for arr in days:
+            print('{:<3} | {:<10} | {:<15} | {:<20} | {:<20}'.format(arr[0], arr[1], arr[2], arr[3], arr[4]))
+    else: 
+        for arr in sorted(days, key=lambda remaining: remaining[2]): 
+            print('{:<3} | {:<10} | {:<15} | {:<20} | {:<20}'.format(arr[0], arr[1], arr[2], arr[3], arr[4]))
+
+    return 
 
 def id_fecha(matriz):
     """
