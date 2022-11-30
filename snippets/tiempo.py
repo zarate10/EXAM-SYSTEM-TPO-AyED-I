@@ -18,9 +18,9 @@ def validarBisiesto(year):
   Recibe un entero que indica el año y verifica si corresponde a un año bisiesto.
   
   Args:
-  Recibe como parametro un entero correspondiente al año ingresado por el usuario.
+  Precondición: Recibe como parametro un entero correspondiente al año ingresado por el usuario.
 
-  La funcion debe retornar True si el año es bisiesto, de lo contrario, retorna False.
+  Postcondición: La funcion debe retornar True si el año es bisiesto, de lo contrario, retorna False.
   """
   return year % 4 == 0 and year % 100 != 0 or year % 400 == 0
 
@@ -29,9 +29,9 @@ def reset(dia,mes,anio):
   y el mes es distinto de 12, le suma uno al mes y resetea el dia a 1.
   Si llegase al limite (12) resetea el dia a 1, el mes tambien y le suma uno al año.
   
-  Recibe tres enteros
+  Precondición: Recibe tres enteros
 
-  Debera retornar el mes actualizado o el mes y año actualizados.
+  Postcondición: Debera retornar el mes actualizado o el mes y año actualizados.
   """
   #Incrementar por mes recorrido
 
@@ -49,9 +49,9 @@ def comprobacion(dia,mes,anio):
   y definira sus limites. Tambien hara uso de las funciones ValidarBisiesto y Reset, la cual se encargaran de marcar
   los limites de cada mes.
 
-  La funcion recibira tres enteros
+  Precondición: La funcion recibira tres enteros
 
-  Devolvera la fecha actualizada en caso de haber superado algun limite.
+  Postcondición: Devolvera la fecha actualizada en caso de haber superado algun limite.
   """
   if mes != 2:
       if dia > LIMITES[mes - 1]:
@@ -69,9 +69,9 @@ def diasEntre(dia1,mes1,anio1,dia2,mes2,anio2):
   """La funcion recibira 6 enteros correspondientes a una fecha base y otra fecha de la cual queremos calcular
   la cantidad de dias que hay entre ambas fechas
   
-  Debe recibir 6 enteros para luego castearlos a string y realizar los calculos
+  Precondición: Debe recibir 6 enteros para luego castearlos a string y realizar los calculos
   
-  Retornara un contador que indicara la cantidad de dias entre ambas fechas."""
+  Postcondición: Retornara un contador que indicara la cantidad de dias entre ambas fechas."""
   #Funcion para calcular total de dias entre 2 fechas
   contador = 0
   while (str(dia1)+str(mes1)+str(anio1)) != (str(dia2)+str(mes2)+str(anio2)):
@@ -86,9 +86,9 @@ def es_menor(fecha='20221211'):
     """Esta funcion verifica que la fecha pasada como parametro, (la del examen) sea una fecha del FUTURO 
     y no haya pasado.
     
-    Recibe un string que indica la fecha (ddmmaaaa)
+    Precondición: Recibe un string que indica la fecha (ddmmaaaa)
     
-    Devuelve True si la fecha es del futuro, de lo contrario, devuelve False"""
+    Postcondición: Devuelve True si la fecha es del futuro, de lo contrario, devuelve False"""
     hoy = dt.date.today()
     fecha = dt.date(int(fecha[:4]),int(fecha[4:6]),int(fecha[6:]))
     return not hoy < fecha
@@ -99,12 +99,14 @@ def dias_restantes(fecha):
     Esta funcion recibe un string correspondiente a una fecha y llama a diasEntre para calcular la cantidad de dias
     entre fechas.
 
-    Recibe un string correspondiente a una fecha
+    Precondición: Recibe un string correspondiente a una fecha
 
-    Devuelve la cantidad de dias restantes para llegar a la fecha
+    Postcondición: Devuelve la cantidad de dias restantes para llegar a la fecha
     """
     fecha = fecha.split('-')[::-1]
     today = dt.date.today()
     someday = dt.date(int(fecha[0]), int(fecha[1]), int(fecha[2]))
     diff = (someday - today).days
     return diff
+
+  
