@@ -134,6 +134,8 @@ def matriz_fechas(username):
     except Exception as e:
         print('Ocurrió un error:', e)
     else: 
+        matriz = matriz
+    finally: 
         return matriz
 
 def arr_dias_restantes(matriz): 
